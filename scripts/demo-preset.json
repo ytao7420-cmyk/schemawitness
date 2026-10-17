@@ -1,0 +1,65 @@
+{
+  "id": "noaa-dictionary-mapping-v1",
+  "notice": "All sample measurements below are synthetic and were supplied by project-controlled test actors. NOAA supplies the unmodified data dictionary, not these observations. This demonstrates interpretation and deterministic conversion, not station provenance or observation accuracy.",
+  "plans": [
+    {
+      "id": "tmax-fahrenheit-v1",
+      "element": "TMAX",
+      "target": {"quantity": "TEMPERATURE", "aggregation": "DAILY_MAX", "unit": "degF"},
+      "expectedAttestation": "ACCEPTED",
+      "receiptId": "synthetic-temperature-v1",
+      "samples": [
+        {"raw":253,"mflag":"","qflag":"","sflag":"S"},
+        {"raw":-52,"mflag":"","qflag":"","sflag":"S"},
+        {"raw":0,"mflag":"","qflag":"","sflag":"S"},
+        {"raw":-9999,"mflag":"","qflag":"","sflag":"S"},
+        {"raw":253,"mflag":"","qflag":"X","sflag":"S"},
+        {"raw":253,"mflag":"?","qflag":"","sflag":"S"},
+        {"raw":253,"mflag":"","qflag":"","sflag":""}
+      ],
+      "expectedResults": [
+        {"status":"VALUE","normalized":{"numerator":3877,"denominator":50,"unit":"degF"}},
+        {"status":"VALUE","normalized":{"numerator":566,"denominator":25,"unit":"degF"}},
+        {"status":"VALUE","normalized":{"numerator":32,"denominator":1,"unit":"degF"}},
+        {"status":"MISSING"},
+        {"status":"QUALITY_FLAGGED"},
+        {"status":"UNKNOWN_FLAGS"},
+        {"status":"UNKNOWN_FLAGS"}
+      ]
+    },
+    {
+      "id": "prcp-millimetres-v1",
+      "element": "PRCP",
+      "target": {"quantity": "PRECIPITATION", "aggregation": "DAILY_TOTAL", "unit": "mm"},
+      "expectedAttestation": "ACCEPTED",
+      "receiptId": "synthetic-precipitation-v1",
+      "samples": [
+        {"raw":123,"mflag":"","qflag":"","sflag":"S"},
+        {"raw":0,"mflag":"","qflag":"","sflag":"S"},
+        {"raw":0,"mflag":"T","qflag":"","sflag":"S"},
+        {"raw":-9999,"mflag":"","qflag":"","sflag":"S"},
+        {"raw":123,"mflag":"","qflag":"X","sflag":"S"},
+        {"raw":-1,"mflag":"","qflag":"","sflag":"S"},
+        {"raw":123,"mflag":"P","qflag":"","sflag":"S"},
+        {"raw":123,"mflag":"","qflag":"","sflag":"?"}
+      ],
+      "expectedResults": [
+        {"status":"VALUE","normalized":{"numerator":123,"denominator":10,"unit":"mm"}},
+        {"status":"VALUE","normalized":{"numerator":0,"denominator":1,"unit":"mm"}},
+        {"status":"TRACE"},
+        {"status":"MISSING"},
+        {"status":"QUALITY_FLAGGED"},
+        {"status":"INVALID_VALUE"},
+        {"status":"MEASUREMENT_FLAGGED"},
+        {"status":"UNKNOWN_FLAGS"}
+      ]
+    },
+    {
+      "id": "tmax-incorrect-mean-v1",
+      "element": "TMAX",
+      "target": {"quantity": "TEMPERATURE", "aggregation": "DAILY_MEAN", "unit": "degC"},
+      "expectedAttestation": "MISMATCH",
+      "samples": [{"raw":253,"mflag":"","qflag":"","sflag":"S"}]
+    }
+  ]
+}

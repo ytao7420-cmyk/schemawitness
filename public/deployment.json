@@ -1,0 +1,29 @@
+{
+  "network": "GenLayer Studionet",
+  "chainId": 61999,
+  "rpc": "https://studio.genlayer.com/api",
+  "explorer": "https://explorer-studio.genlayer.com",
+  "deployed": true,
+  "address": "0x3BAfd91140bb7dF7e4ED2a98A2679Ed80A52e8c7",
+  "sourceSha256": "faeec3dbd2736a7f53bebd4c8f486f100246a7182723a278bb46392eab0a30f0",
+  "deployer": "0x04AD09d860A650e01b32D5417561019E5fcbAF77",
+  "deploymentTransaction": "0xc7d84be7eb145bf7143f1a9645cc05010637eb9f3c86ec12fd7f5c42f670241a",
+  "deploymentReceipt": {
+    "status": "ACCEPTED",
+    "execution": "SUCCESS",
+    "executionResult": "SUCCESS",
+    "consensusResult": "MAJORITY_AGREE",
+    "leaderOnly": false,
+    "votes": {
+      "0x2FcBC452425f2F1e102c5c04b4331fcB46ee1c00": "agree",
+      "0x5Bbbd7cdD63c0ba7f088038Cb049bDDAbE4F6fd1": "idle",
+      "0x8Ce1805d6970d54748dE7160b5b395dCC5c71F44": "agree",
+      "0x8a876C3F3a4783Bd123982bcBF3c672dc0239004": "idle",
+      "0xb0925568bFbCF00aADBcA053E6D0E1628ff3d530": "agree"
+    },
+    "createdAt": "2026-10-17T22:34:43.883674+00:00",
+    "observedAt": "2026-10-17T22:34:51.871Z"
+  },
+  "notice": "Self-controlled auxiliary test deployer. Test network only, no production funds or Portal-user attribution.",
+  "verifiedAt": "2026-10-17T22:34:51.871Z"
+}

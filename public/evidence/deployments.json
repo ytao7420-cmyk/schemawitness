@@ -1,0 +1,27 @@
+{
+  "notice": "Historical test deployments. Deployment success does not establish a successful application workflow.",
+  "deployments": [
+    {
+      "address": "0x1773884c1aeda03008D8cDA7B592De65cf49fcF1",
+      "sourceSha256": "4c2b2bd50260dccee08442ebbf8a404ce5f4f78f045014c39963b9a398bea81a",
+      "deploymentTransaction": "0x3d8d94d768e897432f3fc6f7cd3aa59d112105eae5bd277552f7fe325a977c10",
+      "chainId": 61999,
+      "verifiedAt": "2026-10-17T22:26:18.960Z",
+      "status": "ACCEPTED",
+      "consensusResult": "MAJORITY_AGREE",
+      "execution": "SUCCESS",
+      "leaderOnly": false
+    },
+    {
+      "address": "0x3BAfd91140bb7dF7e4ED2a98A2679Ed80A52e8c7",
+      "sourceSha256": "faeec3dbd2736a7f53bebd4c8f486f100246a7182723a278bb46392eab0a30f0",
+      "deploymentTransaction": "0xc7d84be7eb145bf7143f1a9645cc05010637eb9f3c86ec12fd7f5c42f670241a",
+      "chainId": 61999,
+      "verifiedAt": "2026-10-17T22:34:51.871Z",
+      "status": "ACCEPTED",
+      "consensusResult": "MAJORITY_AGREE",
+      "execution": "SUCCESS",
+      "leaderOnly": false
+    }
+  ]
+}

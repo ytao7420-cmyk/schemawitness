@@ -1,0 +1,45 @@
+{
+  "recordedAt": "2026-10-17T22:31:12.651Z",
+  "network": "GenLayer Studionet",
+  "chainId": 61999,
+  "contractAddress": "0x1773884c1aeda03008D8cDA7B592De65cf49fcF1",
+  "contractSourceSha256": "4c2b2bd50260dccee08442ebbf8a404ce5f4f78f045014c39963b9a398bea81a",
+  "transactionHash": "0x7123af22c9878a08a7c25e47d82ff53ba066ffd1e6ba943647239ed989a6f6ff",
+  "transactionUrl": "https://explorer-studio.genlayer.com/tx/0x7123af22c9878a08a7c25e47d82ff53ba066ffd1e6ba943647239ed989a6f6ff",
+  "method": "attest",
+  "planId": "tmax-fahrenheit-v1",
+  "initialObserved": {
+    "lifecycle": "UNDETERMINED",
+    "consensusResult": "MAJORITY_DISAGREE",
+    "leaderOnly": false,
+    "execution": "ERROR",
+    "executionSuccessful": false,
+    "leaderResultStatus": "rollback",
+    "decodedLeaderPayload": "Supported semantics require every decoder field",
+    "voteCounts": {
+      "idle": 2,
+      "disagree": 3
+    }
+  },
+  "currentObserved": {
+    "lifecycle": "FINALIZED",
+    "consensusResult": "MAJORITY_DISAGREE",
+    "leaderOnly": false,
+    "execution": "ERROR",
+    "executionSuccessful": false,
+    "leaderResultStatus": "rollback",
+    "decodedLeaderPayload": "Supported semantics require every decoder field",
+    "voteCounts": {
+      "idle": 2,
+      "disagree": 3
+    }
+  },
+  "stateReadBack": {
+    "planExists": true,
+    "dictionaryCaptured": true,
+    "dictionarySha256": "0e4e6f0e6947cf1add884c328a01760f31c56ef5fb86b85ed57dd5dc4c4aeaa6",
+    "attestation": null
+  },
+  "outcome": "NO_ATTESTATION_COMMITTED",
+  "notice": "Historical unsuccessful first version, preserved for transparency. Lifecycle FINALIZED, if observed later, does not override failed VM execution or majority disagreement. The plan and dictionary existed, but this transaction did not establish an accepted semantic mapping. Current and local observations are distinct."
+}

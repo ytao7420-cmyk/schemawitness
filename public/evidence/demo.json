@@ -1,0 +1,1154 @@
+{
+  "recordedAt": "2026-10-17T22:51:43.771Z",
+  "network": "GenLayer Studionet",
+  "chainId": 61999,
+  "explorer": "https://explorer-studio.genlayer.com",
+  "contractAddress": "0x3BAfd91140bb7dF7e4ED2a98A2679Ed80A52e8c7",
+  "contractSourceSha256": "faeec3dbd2736a7f53bebd4c8f486f100246a7182723a278bb46392eab0a30f0",
+  "presetDigest": "98a1a3713787559ff95e31ccff1a427b5f2a1c7853d7c5aaf18c6c73c3f854cf",
+  "notice": "All sample measurements below are synthetic and were supplied by project-controlled test actors. NOAA supplies the unmodified data dictionary, not these observations. This demonstrates interpretation and deterministic conversion, not station provenance or observation accuracy.",
+  "actors": {
+    "creator": "0x9693a213f98b03E52Cc67645Fa2D9c457A9c6c44",
+    "recorder": "0x50c46dcb46B2A31D769b1200600A0E91BD60aAf8"
+  },
+  "source": {
+    "url": "https://noaa-ghcn-pds.s3.amazonaws.com/readme.txt",
+    "sha256": "0e4e6f0e6947cf1add884c328a01760f31c56ef5fb86b85ed57dd5dc4c4aeaa6",
+    "bytes": 29587,
+    "retrievedAt": "2026-10-17T22:22:43.749084+00:00"
+  },
+  "verification": {
+    "contractSourceVerified": true,
+    "originalDictionaryBytesVerified": true,
+    "digestsVerified": true,
+    "citationsVerified": true,
+    "exactConversionsVerified": true,
+    "flagAndMissingHandlingVerified": true,
+    "semanticMismatchBlocked": true
+  },
+  "mappings": [
+    {
+      "plan": {
+        "dictionary_sha256": "0e4e6f0e6947cf1add884c328a01760f31c56ef5fb86b85ed57dd5dc4c4aeaa6",
+        "digest": "afcaff4775b42a89dfe24fb0f2e3e3d42a01478ba183518b1de4acd5523ec386",
+        "element": "TMAX",
+        "id": "tmax-fahrenheit-v1",
+        "owner": "0x9693a213f98b03e52cc67645fa2d9c457a9c6c44",
+        "profile": "ghcn-daily-scalar-v1",
+        "source_url": "https://noaa-ghcn-pds.s3.amazonaws.com/readme.txt",
+        "target": {
+          "aggregation": "DAILY_MAX",
+          "quantity": "TEMPERATURE",
+          "unit": "degF"
+        }
+      },
+      "dictionary": {
+        "byte_length": 29587,
+        "digest": "9e480ceccf1191bb4f3b2e2b6ec9112c4c9c3fe0e0781b08d4ce8c0874befc43",
+        "line_count": 645,
+        "sha256": "0e4e6f0e6947cf1add884c328a01760f31c56ef5fb86b85ed57dd5dc4c4aeaa6",
+        "text": "README FILE FOR DAILY GLOBAL HISTORICAL CLIMATOLOGY NETWORK (GHCN-DAILY) \nVersion 3.35\n\n--------------------------------------------------------------------------------\nHow to cite:\n\nNote that the GHCN-Daily dataset itself now has a DOI (Digital Object Identifier)\nso it may be relevant to cite both the methods/overview journal article as well \nas the specific version of the dataset used.\n\nThe journal article describing GHCN-Daily is:\nMenne, M.J., I. Durre, R.S. Vose, B.E. Gleason, and T.G. Houston, 2012:  An overview \nof the Global Historical Climatology Network-Daily Database.  Journal of Atmospheric \nand Oceanic Technology, 29, 897-910, doi:10.1175/JTECH-D-11-00103.1.\n\nTo acknowledge the specific version of the dataset used, please cite:\nMenne, M.J., I. Durre, B. Korzeniewski, S. McNeill, K. Thomas, X. Yin, S. Anthony, R. Ray, \nR.S. Vose, B.E.Gleason, and T.G. Houston, 2012: Global Historical Climatology Network - \nDaily (GHCN-Daily), Version 3. [indicate subset used following decimal, \ne.g. Version 3.12]. \nNOAA National Climatic Data Center. http://doi.org/10.7289/V5D21VHZ [access date].\n--------------------------------------------------------------------------------\n\nI. DOWNLOAD QUICK START\n\nStart by downloading \"ghcnd-stations.txt,\" which has metadata for all stations.\n\nThen download one of the following TAR files:\n\n  - \"ghcnd-all.tar.gz\" if you want all of GHCN-Daily, OR\n  - \"ghcnd-gsn.tar.gz\" if you only want the GCOS Surface Network (GSN), OR\n  - \"ghcnd-hcn.tar.gz\" if you only want the U.S. Historical Climatology Network \n    (U.S. HCN).\n\nThen uncompress and untar the contents of the tar file, \ne.g., by using the following Linux command:\n\ntar xzvf ghcnd_xxx.tar.gz\n\nWhere \"xxx\" stands for \"all\", \"hcn\", or \"gsn\" as applicable. The files will be \nextracted into a subdirectory under the directory where the command is issued.\n\nALTERNATIVELY, if you only need data for one station:\n\n  - Find the station's name in \"ghcnd-stations.txt\" and note its station\n    identification code (e.g., PHOENIX AP (Airport) is \"USW00023183\"); and\n  - Download the data file (i.e., \".dly\" file) that corresponds to this code\n    (e.g., \"USW00023183.dly\" has the data for PHOENIX AP).  \n    Note that the \".dly\" file is located in the \"all\" subdirectory.\n\n--------------------------------------------------------------------------------\n--------------------------------------------------------------------------------\n\nII. CONTENTS OF ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily\n\nall:                  Directory with \".dly\" files for all of GHCN-Daily\ngsn:                  Directory with \".dly\" files for the GCOS Surface Network \n                      (GSN)\nhcn:                  Directory with \".dly\" files for U.S. HCN\nby_year:              Directory with GHCN Daily files parsed into yearly\n                      subsets with observation times where available.  See the\n\t\t      /by_year/readme.txt and \n\t\t      /by_year/ghcn-daily-by_year-format.rtf \n\t\t      files for further details\nby_station:           Directory of GHCN daily station data in period of record\n                      comma separate (csv) files.  See readme-by_station.txt\n                      for additional details\ngrid:\t              Directory with the GHCN-Daily gridded dataset known \n                      as HadGHCND\npapers:\t\t      Directory with pdf versions of journal articles relevant \n                      to the GHCN-Daily dataset\nfigures:\t      Directory containing figures that summarize the inventory \n                      and processing of GHCN-Daily station records\nsuperghcnd:\t      Directory containing a comma delimited format of GHCN-Daily\n                      with station metadata integrated into the data.  Two files \n\t\t      are provided each day.  The superghcnd_full file contains\n\t\t      all GHCN-Daily data in comma delimited format and the \n\t\t      superghcnd_diff file which contains the differences in\n\t\t      the dataset between two successive update runs.  See\n\t\t      the readme.txt file in the superghcnd directory for more\n\t\t      details.\n\nghcnd-all.tar.gz:  TAR file of the GZIP-compressed files in the \"all\" directory\nghcnd-gsn.tar.gz:  TAR file of the GZIP-compressed \"gsn\" directory\nghcnd-hcn.tar.gz:  TAR file of the GZIP-compressed \"hcn\" directory\n\nghcnd-countries.txt:  List of country codes (FIPS) and names\nghcnd-inventory.txt:  File listing the periods of record for each station and \n                      element\nghcnd-stations.txt:   List of stations and their metadata (e.g., coordinates)\nghcnd-states.txt:     List of U.S. state and Canadian Province codes \n                      used in ghcnd-stations.txt\nghcnd-version.txt:    File that specifies the current version of GHCN Daily\nmingle-list.txt:      File that provides a list of each source and source identifiers\n  \t              associated with each GHCN-Daily station.\n\nreadme.txt:           This file\nstatus.txt:           Notes on the current status of GHCN-Daily\n\n--------------------------------------------------------------------------------\n--------------------------------------------------------------------------------\n\nIII. FORMAT OF DATA FILES (\".dly\" FILES)\n\nEach \".dly\" file contains data for one station.  The name of the file\ncorresponds to a station's identification code.  For example, \"USC00026481.dly\"\ncontains the data for the station with the identification code USC00026481).\n\nEach record in a file contains one month of daily data.  The variables on each\nline include the following:\n\n------------------------------\nVariable   Columns   Type\n------------------------------\nID            1-11   Character\nYEAR         12-15   Integer\nMONTH        16-17   Integer\nELEMENT      18-21   Character\nVALUE1       22-26   Integer\nMFLAG1       27-27   Character\nQFLAG1       28-28   Character\nSFLAG1       29-29   Character\nVALUE2       30-34   Integer\nMFLAG2       35-35   Character\nQFLAG2       36-36   Character\nSFLAG2       37-37   Character\n  .           .          .\n  .           .          .\n  .           .          .\nVALUE31    262-266   Integer\nMFLAG31    267-267   Character\nQFLAG31    268-268   Character\nSFLAG31    269-269   Character\n------------------------------\n\nThese variables have the following definitions:\n\nID         is the station identification code.  Please see \"ghcnd-stations.txt\"\n           for a complete list of stations and their metadata.\nYEAR       is the year of the record.\n\nMONTH      is the month of the record.\n\nELEMENT    is the element type.   There are five core elements as well as a number\n           of addition elements.  \n\t   \n\t   The five core elements are:\n\n           PRCP = Precipitation (tenths of mm)\n   \t   SNOW = Snowfall (mm)\n\t   SNWD = Snow depth (mm)\n           TMAX = Maximum temperature (tenths of degrees C)\n           TMIN = Minimum temperature (tenths of degrees C)\n\t   \n\t   The other elements are:\n\t   \n\t   ACMC = Average cloudiness midnight to midnight from 30-second \n\t          ceilometer data (percent)\n\t   ACMH = Average cloudiness midnight to midnight from \n\t          manual observations (percent)\n           ACSC = Average cloudiness sunrise to sunset from 30-second \n\t          ceilometer data (percent)\n\t   ACSH = Average cloudiness sunrise to sunset from manual \n\t          observations (percent)\n           ADPT = Average Dew Point Temperature for the day (tenths of degrees C)\n           ASLP = Average Sea Level Pressure for the day (hPa * 10)\n           ASTP = Average Station Level Pressure for the day (hPa * 10)\n           AWBT = Average Wet Bulb Temperature for the day (tenths of degrees C)\n           AWDR = Average daily wind direction (degrees)\n\t   AWND = Average daily wind speed (tenths of meters per second)\n\t   DAEV = Number of days included in the multiday evaporation\n\t          total (MDEV)\n\t   DAPR = Number of days included in the multiday precipiation \n\t          total (MDPR)\n           DASF = Number of days included in the multiday snowfall \n\t          total (MDSF)\t\t  \n\t   DATN = Number of days included in the multiday minimum temperature \n\t         (MDTN)\n\t   DATX = Number of days included in the multiday maximum temperature \n\t          (MDTX)\n           DAWM = Number of days included in the multiday wind movement\n\t          (MDWM)\n\t   DWPR = Number of days with non-zero precipitation included in \n\t          multiday precipitation total (MDPR)\n\t   EVAP = Evaporation of water from evaporation pan (tenths of mm)\n\t   FMTM = Time of fastest mile or fastest 1-minute wind \n\t          (hours and minutes, i.e., HHMM)\n\t   FRGB = Base of frozen ground layer (cm)\n\t   FRGT = Top of frozen ground layer (cm)\n\t   FRTH = Thickness of frozen ground layer (cm)\n\t   GAHT = Difference between river and gauge height (cm)\n\t   MDEV = Multiday evaporation total (tenths of mm; use with DAEV)\n\t   MDPR = Multiday precipitation total (tenths of mm; use with DAPR and \n\t          DWPR, if available)\n\t   MDSF = Multiday snowfall total \n\t   MDTN = Multiday minimum temperature (tenths of degrees C; use with \n\t          DATN)\n\t   MDTX = Multiday maximum temperature (tenths of degress C; use with \n\t          DATX)\n\t   MDWM = Multiday wind movement (km)\n           MNPN = Daily minimum temperature of water in an evaporation pan \n\t         (tenths of degrees C)\n           MXPN = Daily maximum temperature of water in an evaporation pan \n\t         (tenths of degrees C)\n\t   PGTM = Peak gust time (hours and minutes, i.e., HHMM)\n\t   PSUN = Daily percent of possible sunshine (percent)\n           RHAV = Average relative humidity for the day (percent)\n           RHMN = Minimum relative humidity for the day (percent)\n           RHMX = Maximum relative humidity for the day (percent)\n\t   SN*# = Minimum soil temperature (tenths of degrees C)\n\t          where * corresponds to a code\n\t          for ground cover and # corresponds to a code for soil \n\t\t  depth.  \n\t\t  \n\t\t  Ground cover codes include the following:\n\t\t  0 = unknown\n\t\t  1 = grass\n\t\t  2 = fallow\n\t\t  3 = bare ground\n\t\t  4 = brome grass\n\t\t  5 = sod\n\t\t  6 = straw multch\n\t\t  7 = grass muck\n\t\t  8 = bare muck\n\t\t  \n\t\t  Depth codes include the following:\n\t\t  1 = 5 cm\n\t\t  2 = 10 cm\n\t\t  3 = 20 cm\n\t\t  4 = 50 cm\n\t\t  5 = 100 cm\n\t\t  6 = 150 cm\n\t\t  7 = 180 cm\n\t\t  \n\t   SX*# = Maximum soil temperature (tenths of degrees C) \n\t          where * corresponds to a code for ground cover \n\t\t  and # corresponds to a code for soil depth. \n\t\t  See SN*# for ground cover and depth codes.\n           TAXN = Average daily temperature computed as \n                  (TMAX+TMIN)/2.0 (tenths of degrees C) \n           TAVG = Average daily temperature (tenths of degrees C)\n\t          [Note that TAVG from source 'S' corresponds\n\t\t   to an average of hourly readings for the period\n\t\t   ending at 2400 UTC rather than local midnight or other\n                   Local Standard Time according to a specific \n                   Met Service's protocol]\n                  [For sources other than 'S' TAVG is computed in a \n                   variety of ways including\n                   traditional fixed hours of the day whereas TAXN\n                  is solely computed as (TMAX+TMIN)/2.0]\n           THIC = Thickness of ice on water (tenths of mm)\t\n \t   TOBS = Temperature at the time of observation (tenths of degrees C)\n\t   TSUN = Daily total sunshine (minutes)\n\t   WDF1 = Direction of fastest 1-minute wind (degrees)\n\t   WDF2 = Direction of fastest 2-minute wind (degrees)\n\t   WDF5 = Direction of fastest 5-second wind (degrees)\n\t   WDFG = Direction of peak wind gust (degrees)\n\t   WDFI = Direction of highest instantaneous wind (degrees)\n\t   WDFM = Fastest mile wind direction (degrees)\n           WDMV = 24-hour wind movement (km)\t   \n           WESD = Water equivalent of snow on the ground (tenths of mm)\n\t   WESF = Water equivalent of snowfall (tenths of mm)\n\t   WSF1 = Fastest 1-minute wind speed (tenths of meters per second)\n\t   WSF2 = Fastest 2-minute wind speed (tenths of meters per second)\n\t   WSF5 = Fastest 5-second wind speed (tenths of meters per second)\n\t   WSFG = Peak gust wind speed (tenths of meters per second)\n\t   WSFI = Highest instantaneous wind speed (tenths of meters per second)\n\t   WSFM = Fastest mile wind speed (tenths of meters per second)\n\t   WT** = Weather Type where ** has one of the following values:\n\t   \n                  01 = Fog, ice fog, or freezing fog (may include heavy fog)\n                  02 = Heavy fog or heaving freezing fog (not always \n\t\t       distinquished from fog)\n                  03 = Thunder\n                  04 = Ice pellets, sleet, snow pellets, or small hail \n                  05 = Hail (may include small hail)\n                  06 = Glaze or rime \n                  07 = Dust, volcanic ash, blowing dust, blowing sand, or \n\t\t       blowing obstruction\n                  08 = Smoke or haze \n                  09 = Blowing or drifting snow\n                  10 = Tornado, waterspout, or funnel cloud \n                  11 = High or damaging winds\n                  12 = Blowing spray\n                  13 = Mist\n                  14 = Drizzle\n                  15 = Freezing drizzle \n                  16 = Rain (may include freezing rain, drizzle, and\n\t\t       freezing drizzle) \n                  17 = Freezing rain \n                  18 = Snow, snow pellets, snow grains, or ice crystals\n                  19 = Unknown source of precipitation \n                  21 = Ground fog \n                  22 = Ice fog or freezing fog\n\t\t  \n            WV** = Weather in the Vicinity where ** has one of the following \n\t           values:\n\t\t   \n\t\t   01 = Fog, ice fog, or freezing fog (may include heavy fog)\n\t\t   03 = Thunder\n\t\t   07 = Ash, dust, sand, or other blowing obstruction\n\t\t   18 = Snow or ice crystals\n\t\t   20 = Rain or snow shower\n\t\t   \nVALUE1     is the value on the first day of the month (missing = -9999).\n\nMFLAG1     is the measurement flag for the first day of the month.  There are\n           ten possible values:\n\n           Blank = no measurement information applicable\n           A     = precipitation total from one report of 6-hour precipitation amount\n           B     = precipitation total summed from two 12-hour totals\n           C     = precipitation total summed from 3 reports of 6-hour precipitation amount\n           D     = precipitation total summed from four six-hour totals\n           E     = precipitation total from 1 report of 12-hour precipitation amount\n           F     = precipitation total from the summation of 2 reports of 12-hour totals\n           G     = precipitation from 1 report of 24-hour precipitation amount\n\t   H     = for TMAX/TMIN/TAVG represents highest or lowest hourly temperature (TMAX or TMIN) \n\t           or the average of hourly values (TAVG)\n                   for PRCP Station reported '0' as the amount for the day (eg, from hourly, 6-hourly \n                   reports, etc.) or the amount could not be calculated, but at least one occurrence \n                   of precipitation was noted in the present weather observations. This could indicate \n                   that a trace occurred (or more if the value is missing).\n           I     = Station did not report any precipitation data for the day and did not report any \n                   occurrences of precipitation in its present weather observations\n\t   K     = converted from knots \n\t   L     = temperature appears to be lagged with respect to reported\n\t           hour of observation \n           O     = converted from oktas \n\t   P     = identified as \"missing presumed zero\" in DSI 3200 and 3206\n           T     = trace of precipitation, snowfall, or snow depth\n\t   W     = converted from 16-point WBAN code (for wind direction)\n\nQFLAG1     is the quality flag for the first day of the month.  There are \n           fourteen possible values:\n\n           Blank = did not fail any quality assurance check\n           D     = failed duplicate check\n           G     = failed gap check\n           I     = failed internal consistency check\n           K     = failed streak/frequent-value check\n\t   L     = failed check on length of multiday period \n           M     = failed megaconsistency check\n           N     = failed naught check\n           O     = failed climatological outlier check\n           R     = failed lagged range check\n           S     = failed spatial consistency check\n           T     = failed temporal consistency check\n           W     = temperature too warm for snow\n           X     = failed bounds check\n\t   Z     = flagged as a result of an official Datzilla \n\t           investigation\n\nSFLAG1     is the source flag for the first day of the month.  There are \n           thirty possible values (including blank, upper and \n\t   lower case letters):\n\n           Blank = No source (i.e., data value missing)\n           0     = U.S. Cooperative Summary of the Day (NCDC DSI-3200)\n           1     = CF6 (form F6) daily climate summaries from the U.S.\n                   National Weather Service\n           2     = Synoptic Summary of the Day (SSOD) \"version 2\", the \n                   successor to GSOD (source 'S')\n           6     = CDMP Cooperative Summary of the Day (NCDC DSI-3206)\n           7     = U.S. Cooperative Summary of the Day -- Transmitted \n\t           via WxCoder3 (NCDC DSI-3207)\n           A     = U.S. Automated Surface Observing System (ASOS) \n                   real-time data (since January 1, 2006)\n\t   a     = Australian data from the Australian Bureau of Meteorology\n           B     = U.S. ASOS data for October 2000-December 2005 (NCDC \n                   DSI-3211)\n\t   b     = Belarus update\n\t   C     = Environment Canada\n\t   D     = Short time delay US National Weather Service CF6 daily \n\t           summaries provided by the High Plains Regional Climate\n\t\t   Center\n           d     = Short time delay US National Weather Service Daily\n                   Summary Message (DSMs) provided by the High Plains \n                   Regional Climate Center\n\t   E     = European Climate Assessment and Dataset (Klein Tank \n\t           et al., 2002)\t   \n           F     = U.S. Fort data \n           G     = Official Global Climate Observing System (GCOS) or \n                   other government-supplied data\n           H     = High Plains Regional Climate Center real-time data\n           I     = International collection (non U.S. data received through\n\t           personal contacts)\n           K     = U.S. Cooperative Summary of the Day data digitized from\n\t           paper observer forms (from 2011 to present)\n           M     = Monthly METAR Extract (additional ASOS data)\n\t   f     = Data provided courtesy of the Fiji Met Service\n           m     = Data from the Mexican National Water Commission (Comision\n\t           National del Agua -- CONAGUA)\n\t   N     = Community Collaborative Rain, Hail,and Snow (CoCoRaHS)\n\t   Q     = Data from several African countries that had been \n\t           \"quarantined\", that is, withheld from public release\n\t\t   until permission was granted from the respective \n\t           meteorological services\n           R     = NCEI Reference Network Database (Climate Reference Network\n\t           and Regional Climate Reference Network)\n\t   r     = All-Russian Research Institute of Hydrometeorological \n\t           Information-World Data Center\n           S     = Global Summary of the Day (NCDC DSI-9618)\n                   NOTE: \"S\" values are derived from hourly synoptic reports\n                   exchanged on the Global Telecommunications System (GTS).\n                   Daily values derived in this fashion may differ significantly\n                   from \"true\" daily data, particularly for precipitation\n                   (i.e., use with caution).\n\t   s     = China Meteorological Administration/National Meteorological Information Center/\n\t           Climatic Data Center (http://cdc.cma.gov.cn)\n           T     = SNOwpack TELemtry (SNOTEL) data obtained from the U.S. \n\t           Department of Agriculture's Natural Resources Conservation Service\n\t   U     = Remote Automatic Weather Station (RAWS) data obtained\n\t           from the Western Regional Climate Center\t   \n\t   u     = Ukraine update\t   \n\t   W     = WBAN/ASOS Summary of the Day from NCDC's Integrated \n\t           Surface Data (ISD).  \n           X     = U.S. First-Order Summary of the Day (NCDC DSI-3210)\n\t   Z     = Datzilla official additions or replacements \n\t   z     = Uzbekistan update\n\t   \n\t   When data are available for the same time from more than one source,\n\t   the highest priority source is chosen according to the following\n\t   priority order (from highest to lowest):\n\t   Z,R,W,D,d,1,0,6,C,X,K,7,F,B,M,f,m,r,E,z,u,b,s,a,G,Q,I,A,N,T,U,H,2,S\n\t   \n\t   \nVALUE2     is the value on the second day of the month\n\nMFLAG2     is the measurement flag for the second day of the month.\n\nQFLAG2     is the quality flag for the second day of the month.\n\nSFLAG2     is the source flag for the second day of the month.\n\n... and so on through the 31st day of the month.  Note: If the month has less \nthan 31 days, then the remaining variables are set to missing (e.g., for April, \nVALUE31 = -9999, MFLAG31 = blank, QFLAG31 = blank, SFLAG31 = blank).\n\n--------------------------------------------------------------------------------\n--------------------------------------------------------------------------------\n\nIV. FORMAT OF \"ghcnd-stations.txt\"\n\n------------------------------\nVariable   Columns   Type\n------------------------------\nID            1-11   Character\nLATITUDE     13-20   Real\nLONGITUDE    22-30   Real\nELEVATION    32-37   Real\nSTATE        39-40   Character\nNAME         42-71   Character\nGSN FLAG     73-75   Character\nHCN/CRN FLAG 77-79   Character\nWMO ID       81-85   Character\n------------------------------\n\nThese variables have the following definitions:\n\nID         is the station identification code.  Note that the first two\n           characters denote the FIPS  country code, the third character \n           is a network code that identifies the station numbering system \n           used, and the remaining eight characters contain the actual \n           station ID. \n\n           See \"ghcnd-countries.txt\" for a complete list of country codes.\n\t   See \"ghcnd-states.txt\" for a list of state/province/territory codes.\n\n           The network code  has the following five values:\n\n           0 = unspecified (station identified by up to eight \n\t       alphanumeric characters)\n\t   1 = Community Collaborative Rain, Hail,and Snow (CoCoRaHS)\n\t       based identification number.  To ensure consistency with\n\t       with GHCN Daily, all numbers in the original CoCoRaHS IDs\n\t       have been left-filled to make them all four digits long. \n\t       In addition, the characters \"-\" and \"_\" have been removed \n\t       to ensure that the IDs do not exceed 11 characters when \n\t       preceded by \"US1\". For example, the CoCoRaHS ID \n\t       \"AZ-MR-156\" becomes \"US1AZMR0156\" in GHCN-Daily\n           C = U.S. Cooperative Network identification number (last six \n               characters of the GHCN-Daily ID)\n\t   E = Identification number used in the ECA&D non-blended\n\t       dataset\n\t   M = World Meteorological Organization ID (last five\n\t       characters of the GHCN-Daily ID)\n\t   N = Identification number used in data supplied by a \n\t       National Meteorological or Hydrological Center\n           P = \"Pre-Coop\" (an internal identifier assigned by NCEI for station\n               records collected prior to the establishment of the U.S. Weather\n               Bureau and their management of the U.S. Cooperative (Coop) \n               Observer Program\n\t   R = U.S. Interagency Remote Automatic Weather Station (RAWS)\n\t       identifier\n\t   S = U.S. Natural Resources Conservation Service SNOwpack\n\t       TELemtry (SNOTEL) station identifier\n           W = WBAN identification number (last five characters of the \n               GHCN-Daily ID)\n\nLATITUDE   is latitude of the station (in decimal degrees).\n\nLONGITUDE  is the longitude of the station (in decimal degrees).\n\nELEVATION  is the elevation of the station (in meters, missing = -999.9).\n\n\nSTATE      is the U.S. postal code for the state (for U.S. stations only).\n\nNAME       is the name of the station.\n\nGSN FLAG   is a flag that indicates whether the station is part of the GCOS\n           Surface Network (GSN). The flag is assigned by cross-referencing \n           the number in the WMOID field with the official list of GSN \n           stations. There are two possible values:\n\n           Blank = non-GSN station or WMO Station number not available\n           GSN   = GSN station \n\nHCN/      is a flag that indicates whether the station is part of the U.S.\nCRN FLAG  Historical Climatology Network (HCN) or U.S. Climate Refererence\n          Network (CRN).  There are three possible values:\n\n           Blank = Not a member of the U.S. Historical Climatology \n\t           or U.S. Climate Reference Networks\n           HCN   = U.S. Historical Climatology Network station\n\t   CRN   = U.S. Climate Reference Network or U.S. Regional Climate \n\t           Network Station\n\nWMO ID     is the World Meteorological Organization (WMO) number for the\n           station.  If the station has no WMO number (or one has not yet \n\t   been matched to this station), then the field is blank.  \n\n--------------------------------------------------------------------------------\n--------------------------------------------------------------------------------\n\nV. FORMAT OF \"ghcnd-countries.txt\"\n\n------------------------------\nVariable   Columns   Type\n------------------------------\nCODE          1-2    Character\nNAME          4-64   Character\n------------------------------\n\nThese variables have the following definitions:\n\nCODE       is the FIPS country code of the country where the station is \n           located (from FIPS Publication 10-4 at \n           www.cia.gov/cia/publications/factbook/appendix/appendix-d.html).\n\nNAME       is the name of the country.\n\n--------------------------------------------------------------------------------\n--------------------------------------------------------------------------------\n\nVI. FORMAT OF \"ghcnd-states.txt\"\n\n------------------------------\nVariable   Columns   Type\n------------------------------\nCODE          1-2    Character\nNAME         4-50    Character\n------------------------------\n\nThese variables have the following definitions:\n\nCODE       is the POSTAL code of the U.S. state/territory or Canadian \n           province where the station is located \n\nNAME       is the name of the state, territory or province.\n\n--------------------------------------------------------------------------------\n--------------------------------------------------------------------------------\n\nVII. FORMAT OF \"ghcnd-inventory.txt\"\n\n------------------------------\nVariable   Columns   Type\n------------------------------\nID            1-11   Character\nLATITUDE     13-20   Real\nLONGITUDE    22-30   Real\nELEMENT      32-35   Character\nFIRSTYEAR    37-40   Integer\nLASTYEAR     42-45   Integer\n------------------------------\n\nThese variables have the following definitions:\n\nID         is the station identification code.  Please see \"ghcnd-stations.txt\"\n           for a complete list of stations and their metadata.\n\nLATITUDE   is the latitude of the station (in decimal degrees).\n\nLONGITUDE  is the longitude of the station (in decimal degrees).\n\nELEMENT    is the element type.  See section III for a definition of elements.\n\nFIRSTYEAR  is the first year of unflagged data for the given element.\n\nLASTYEAR   is the last year of unflagged data for the given element.\n\n--------------------------------------------------------------------------------\n--------------------------------------------------------------------------------\nVIII. FORMAT OF \"mingle-list.txt\"\n\n--------------------------------------------------------------------------------\nVariable                                  Column(s)   Type\n--------------------------------------------------------------------------------\nGHCN-Daily Identifier (ID)                      1-11       Character\nNo of sources assoc. with the station (N)       13-14      Integer\nSource Code of lowest ranking source            16         Character\nSource Idenfier of lowest ranking source        18-28      Character\nSource Code of next lowest ranking source       30         Character\nSource Identifier of next lowest ranking source 32-42\n.\n.\n.\nUp to Nth (highest ranking) source code and source identifier'\n[See section III for a definition of source codes]\n\nIX.  REFERENCES\n\nThe journal article describing GHCN-Daily is:\nMenne, M.J., I. Durre, R.S. Vose, B.E. Gleason, and T.G. Houston, 2012:  An overview \nof the Global Historical Climatology Network-Daily Database.  Journal of Atmospheric \nand Oceanic Technology, 29, 897-910, doi:10.1175/JTECH-D-11-00103.1.\n\nTo acknowledge the specific version of the dataset used, please cite:\nMenne, M.J., I. Durre, B. Korzeniewski, S. McNeal, K. Thomas, X. Yin, S. Anthony, R. Ray, \nR.S. Vose, B.E.Gleason, and T.G. Houston, 2012: Global Historical Climatology Network - \nDaily (GHCN-Daily), Version 3. [indicate subset used following decimal, \ne.g. Version 3.12]. \nNOAA National Climatic Data Center. http://doi.org/10.7289/V5D21VHZ [access date].\n\nKlein Tank, A.M.G. and Coauthors, 2002. Daily dataset of 20th-century surface\nair temperature and precipitation series for the European Climate Assessment.\nInt. J. of Climatol., 22, 1441-1453.\nData and metadata available at http://eca.knmi.nl\n\n\n\nFor additional information, please send an e-mail to ncdc.ghcnd@noaa.gov.\n",
+        "url": "https://noaa-ghcn-pds.s3.amazonaws.com/readme.txt"
+      },
+      "attestation": {
+        "dictionary_digest": "9e480ceccf1191bb4f3b2e2b6ec9112c4c9c3fe0e0781b08d4ce8c0874befc43",
+        "digest": "99aa6004004ce82f8ba0b01fef9bef2770f93754330da98e963d2d954ee552d4",
+        "plan_digest": "afcaff4775b42a89dfe24fb0f2e3e3d42a01478ba183518b1de4acd5523ec386",
+        "profile": "ghcn-daily-scalar-v1",
+        "reason_provenance": "leader-authored explanation; semantic fields and citations validated",
+        "semantics": {
+          "aggregation": "DAILY_MAX",
+          "citations": [
+            {
+              "end_line": 152,
+              "quote": "           TMAX = Maximum temperature (tenths of degrees C)",
+              "start_line": 152
+            },
+            {
+              "end_line": 305,
+              "quote": "VALUE1     is the value on the first day of the month (missing = -9999).",
+              "start_line": 305
+            },
+            {
+              "end_line": 333,
+              "quote": "MFLAG1     is the measurement flag for the first day of the month.  There are\n           ten possible values:\n\n           Blank = no measurement information applicable\n           A     = precipitation total from one report of 6-hour precipitation amount\n           B     = precipitation total summed from two 12-hour totals\n           C     = precipitation total summed from 3 reports of 6-hour precipitation amount\n           D     = precipitation total summed from four six-hour totals\n           E     = precipitation total from 1 report of 12-hour precipitation amount\n           F     = precipitation total from the summation of 2 reports of 12-hour totals\n           G     = precipitation from 1 report of 24-hour precipitation amount\n\t   H     = for TMAX/TMIN/TAVG represents highest or lowest hourly temperature (TMAX or TMIN) \n\t           or the average of hourly values (TAVG)\n                   for PRCP Station reported '0' as the amount for the day (eg, from hourly, 6-hourly \n                   reports, etc.) or the amount could not be calculated, but at least one occurrence \n                   of precipitation was noted in the present weather observations. This could indicate \n                   that a trace occurred (or more if the value is missing).\n           I     = Station did not report any precipitation data for the day and did not report any \n                   occurrences of precipitation in its present weather observations\n\t   K     = converted from knots \n\t   L     = temperature appears to be lagged with respect to reported\n\t           hour of observation \n           O     = converted from oktas \n\t   P     = identified as \"missing presumed zero\" in DSI 3200 and 3206\n           T     = trace of precipitation, snowfall, or snow depth\n\t   W     = converted from 16-point WBAN code (for wind direction)\n",
+              "start_line": 307
+            },
+            {
+              "end_line": 352,
+              "quote": "QFLAG1     is the quality flag for the first day of the month.  There are \n           fourteen possible values:\n\n           Blank = did not fail any quality assurance check\n           D     = failed duplicate check\n           G     = failed gap check\n           I     = failed internal consistency check\n           K     = failed streak/frequent-value check\n\t   L     = failed check on length of multiday period \n           M     = failed megaconsistency check\n           N     = failed naught check\n           O     = failed climatological outlier check\n           R     = failed lagged range check\n           S     = failed spatial consistency check\n           T     = failed temporal consistency check\n           W     = temperature too warm for snow\n           X     = failed bounds check\n\t   Z     = flagged as a result of an official Datzilla \n\t           investigation",
+              "start_line": 334
+            }
+          ],
+          "missing_value": -9999,
+          "quality_policy": "NONBLANK_QFLAG_EXCLUDE",
+          "quantity": "TEMPERATURE",
+          "reason": "TMAX is defined as maximum temperature with units of tenths of degrees Celsius; global missing/quality/trace conventions apply",
+          "source_unit": "DECI_CELSIUS",
+          "support": "SUPPORTED",
+          "trace_policy": "MFLAG_T_NONEXACT"
+        },
+        "source_sha256": "0e4e6f0e6947cf1add884c328a01760f31c56ef5fb86b85ed57dd5dc4c4aeaa6",
+        "status": "ACCEPTED",
+        "target": {
+          "aggregation": "DAILY_MAX",
+          "quantity": "TEMPERATURE",
+          "unit": "degF"
+        }
+      },
+      "receipt": {
+        "attestation_digest": "99aa6004004ce82f8ba0b01fef9bef2770f93754330da98e963d2d954ee552d4",
+        "digest": "5874677a78369fd4d059690797fcd504bf5be3dda2a01d8d5e107d588cb540ae",
+        "id": "synthetic-temperature-v1",
+        "input_provenance": "caller-supplied; NOT authenticated NOAA observations",
+        "plan_digest": "afcaff4775b42a89dfe24fb0f2e3e3d42a01478ba183518b1de4acd5523ec386",
+        "plan_id": "tmax-fahrenheit-v1",
+        "plan_owner": "0x9693a213f98b03e52cc67645fa2d9c457a9c6c44",
+        "profile": "ghcn-daily-scalar-v1",
+        "recorder": "0x50c46dcb46b2a31d769b1200600a0e91bd60aaf8",
+        "results": [
+          {
+            "input": {
+              "mflag": "",
+              "qflag": "",
+              "raw": 253,
+              "sflag": "S"
+            },
+            "normalized": {
+              "denominator": 50,
+              "numerator": 3877,
+              "unit": "degF"
+            },
+            "reason": "Unflagged caller-supplied scalar; not independently quality-verified",
+            "status": "VALUE"
+          },
+          {
+            "input": {
+              "mflag": "",
+              "qflag": "",
+              "raw": -52,
+              "sflag": "S"
+            },
+            "normalized": {
+              "denominator": 25,
+              "numerator": 566,
+              "unit": "degF"
+            },
+            "reason": "Unflagged caller-supplied scalar; not independently quality-verified",
+            "status": "VALUE"
+          },
+          {
+            "input": {
+              "mflag": "",
+              "qflag": "",
+              "raw": 0,
+              "sflag": "S"
+            },
+            "normalized": {
+              "denominator": 1,
+              "numerator": 32,
+              "unit": "degF"
+            },
+            "reason": "Unflagged caller-supplied scalar; not independently quality-verified",
+            "status": "VALUE"
+          },
+          {
+            "input": {
+              "mflag": "",
+              "qflag": "",
+              "raw": -9999,
+              "sflag": "S"
+            },
+            "normalized": null,
+            "reason": "Dictionary missing sentinel; no numerical value",
+            "status": "MISSING"
+          },
+          {
+            "input": {
+              "mflag": "",
+              "qflag": "X",
+              "raw": 253,
+              "sflag": "S"
+            },
+            "normalized": null,
+            "reason": "Nonblank quality flag retained; excluded from normalization",
+            "status": "QUALITY_FLAGGED"
+          },
+          {
+            "input": {
+              "mflag": "?",
+              "qflag": "",
+              "raw": 253,
+              "sflag": "S"
+            },
+            "normalized": null,
+            "reason": "Unknown measurement/source flag or absent source; excluded",
+            "status": "UNKNOWN_FLAGS"
+          },
+          {
+            "input": {
+              "mflag": "",
+              "qflag": "",
+              "raw": 253,
+              "sflag": ""
+            },
+            "normalized": null,
+            "reason": "Unknown measurement/source flag or absent source; excluded",
+            "status": "UNKNOWN_FLAGS"
+          }
+        ],
+        "samples": [
+          {
+            "mflag": "",
+            "qflag": "",
+            "raw": 253,
+            "sflag": "S"
+          },
+          {
+            "mflag": "",
+            "qflag": "",
+            "raw": -52,
+            "sflag": "S"
+          },
+          {
+            "mflag": "",
+            "qflag": "",
+            "raw": 0,
+            "sflag": "S"
+          },
+          {
+            "mflag": "",
+            "qflag": "",
+            "raw": -9999,
+            "sflag": "S"
+          },
+          {
+            "mflag": "",
+            "qflag": "X",
+            "raw": 253,
+            "sflag": "S"
+          },
+          {
+            "mflag": "?",
+            "qflag": "",
+            "raw": 253,
+            "sflag": "S"
+          },
+          {
+            "mflag": "",
+            "qflag": "",
+            "raw": 253,
+            "sflag": ""
+          }
+        ],
+        "samples_digest": "1711fd59700fdff3e427a76aee9fb042f6c4b50d041d703f4fd0b79aeb1e7026",
+        "source_sha256": "0e4e6f0e6947cf1add884c328a01760f31c56ef5fb86b85ed57dd5dc4c4aeaa6"
+      },
+      "preview": [
+        {
+          "input": {
+            "mflag": "",
+            "qflag": "",
+            "raw": 253,
+            "sflag": "S"
+          },
+          "normalized": {
+            "denominator": 50,
+            "numerator": 3877,
+            "unit": "degF"
+          },
+          "reason": "Unflagged caller-supplied scalar; not independently quality-verified",
+          "status": "VALUE"
+        },
+        {
+          "input": {
+            "mflag": "",
+            "qflag": "",
+            "raw": -52,
+            "sflag": "S"
+          },
+          "normalized": {
+            "denominator": 25,
+            "numerator": 566,
+            "unit": "degF"
+          },
+          "reason": "Unflagged caller-supplied scalar; not independently quality-verified",
+          "status": "VALUE"
+        },
+        {
+          "input": {
+            "mflag": "",
+            "qflag": "",
+            "raw": 0,
+            "sflag": "S"
+          },
+          "normalized": {
+            "denominator": 1,
+            "numerator": 32,
+            "unit": "degF"
+          },
+          "reason": "Unflagged caller-supplied scalar; not independently quality-verified",
+          "status": "VALUE"
+        },
+        {
+          "input": {
+            "mflag": "",
+            "qflag": "",
+            "raw": -9999,
+            "sflag": "S"
+          },
+          "normalized": null,
+          "reason": "Dictionary missing sentinel; no numerical value",
+          "status": "MISSING"
+        },
+        {
+          "input": {
+            "mflag": "",
+            "qflag": "X",
+            "raw": 253,
+            "sflag": "S"
+          },
+          "normalized": null,
+          "reason": "Nonblank quality flag retained; excluded from normalization",
+          "status": "QUALITY_FLAGGED"
+        },
+        {
+          "input": {
+            "mflag": "?",
+            "qflag": "",
+            "raw": 253,
+            "sflag": "S"
+          },
+          "normalized": null,
+          "reason": "Unknown measurement/source flag or absent source; excluded",
+          "status": "UNKNOWN_FLAGS"
+        },
+        {
+          "input": {
+            "mflag": "",
+            "qflag": "",
+            "raw": 253,
+            "sflag": ""
+          },
+          "normalized": null,
+          "reason": "Unknown measurement/source flag or absent source; excluded",
+          "status": "UNKNOWN_FLAGS"
+        }
+      ],
+      "previewReadStrategy": "One sample per read due to observed Studionet gen_call long-RLP failure; full batch recorded in one transaction and compared row-for-row."
+    },
+    {
+      "plan": {
+        "dictionary_sha256": "0e4e6f0e6947cf1add884c328a01760f31c56ef5fb86b85ed57dd5dc4c4aeaa6",
+        "digest": "910487a7665637720d147ccd995d2118ae8406469e6fcb3bd816fee9644cb389",
+        "element": "PRCP",
+        "id": "prcp-millimetres-v1",
+        "owner": "0x9693a213f98b03e52cc67645fa2d9c457a9c6c44",
+        "profile": "ghcn-daily-scalar-v1",
+        "source_url": "https://noaa-ghcn-pds.s3.amazonaws.com/readme.txt",
+        "target": {
+          "aggregation": "DAILY_TOTAL",
+          "quantity": "PRECIPITATION",
+          "unit": "mm"
+        }
+      },
+      "dictionary": {
+        "byte_length": 29587,
+        "digest": "9e480ceccf1191bb4f3b2e2b6ec9112c4c9c3fe0e0781b08d4ce8c0874befc43",
+        "line_count": 645,
+        "sha256": "0e4e6f0e6947cf1add884c328a01760f31c56ef5fb86b85ed57dd5dc4c4aeaa6",
+        "text": "README FILE FOR DAILY GLOBAL HISTORICAL CLIMATOLOGY NETWORK (GHCN-DAILY) \nVersion 3.35\n\n--------------------------------------------------------------------------------\nHow to cite:\n\nNote that the GHCN-Daily dataset itself now has a DOI (Digital Object Identifier)\nso it may be relevant to cite both the methods/overview journal article as well \nas the specific version of the dataset used.\n\nThe journal article describing GHCN-Daily is:\nMenne, M.J., I. Durre, R.S. Vose, B.E. Gleason, and T.G. Houston, 2012:  An overview \nof the Global Historical Climatology Network-Daily Database.  Journal of Atmospheric \nand Oceanic Technology, 29, 897-910, doi:10.1175/JTECH-D-11-00103.1.\n\nTo acknowledge the specific version of the dataset used, please cite:\nMenne, M.J., I. Durre, B. Korzeniewski, S. McNeill, K. Thomas, X. Yin, S. Anthony, R. Ray, \nR.S. Vose, B.E.Gleason, and T.G. Houston, 2012: Global Historical Climatology Network - \nDaily (GHCN-Daily), Version 3. [indicate subset used following decimal, \ne.g. Version 3.12]. \nNOAA National Climatic Data Center. http://doi.org/10.7289/V5D21VHZ [access date].\n--------------------------------------------------------------------------------\n\nI. DOWNLOAD QUICK START\n\nStart by downloading \"ghcnd-stations.txt,\" which has metadata for all stations.\n\nThen download one of the following TAR files:\n\n  - \"ghcnd-all.tar.gz\" if you want all of GHCN-Daily, OR\n  - \"ghcnd-gsn.tar.gz\" if you only want the GCOS Surface Network (GSN), OR\n  - \"ghcnd-hcn.tar.gz\" if you only want the U.S. Historical Climatology Network \n    (U.S. HCN).\n\nThen uncompress and untar the contents of the tar file, \ne.g., by using the following Linux command:\n\ntar xzvf ghcnd_xxx.tar.gz\n\nWhere \"xxx\" stands for \"all\", \"hcn\", or \"gsn\" as applicable. The files will be \nextracted into a subdirectory under the directory where the command is issued.\n\nALTERNATIVELY, if you only need data for one station:\n\n  - Find the station's name in \"ghcnd-stations.txt\" and note its station\n    identification code (e.g., PHOENIX AP (Airport) is \"USW00023183\"); and\n  - Download the data file (i.e., \".dly\" file) that corresponds to this code\n    (e.g., \"USW00023183.dly\" has the data for PHOENIX AP).  \n    Note that the \".dly\" file is located in the \"all\" subdirectory.\n\n--------------------------------------------------------------------------------\n--------------------------------------------------------------------------------\n\nII. CONTENTS OF ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily\n\nall:                  Directory with \".dly\" files for all of GHCN-Daily\ngsn:                  Directory with \".dly\" files for the GCOS Surface Network \n                      (GSN)\nhcn:                  Directory with \".dly\" files for U.S. HCN\nby_year:              Directory with GHCN Daily files parsed into yearly\n                      subsets with observation times where available.  See the\n\t\t      /by_year/readme.txt and \n\t\t      /by_year/ghcn-daily-by_year-format.rtf \n\t\t      files for further details\nby_station:           Directory of GHCN daily station data in period of record\n                      comma separate (csv) files.  See readme-by_station.txt\n                      for additional details\ngrid:\t              Directory with the GHCN-Daily gridded dataset known \n                      as HadGHCND\npapers:\t\t      Directory with pdf versions of journal articles relevant \n                      to the GHCN-Daily dataset\nfigures:\t      Directory containing figures that summarize the inventory \n                      and processing of GHCN-Daily station records\nsuperghcnd:\t      Directory containing a comma delimited format of GHCN-Daily\n                      with station metadata integrated into the data.  Two files \n\t\t      are provided each day.  The superghcnd_full file contains\n\t\t      all GHCN-Daily data in comma delimited format and the \n\t\t      superghcnd_diff file which contains the differences in\n\t\t      the dataset between two successive update runs.  See\n\t\t      the readme.txt file in the superghcnd directory for more\n\t\t      details.\n\nghcnd-all.tar.gz:  TAR file of the GZIP-compressed files in the \"all\" directory\nghcnd-gsn.tar.gz:  TAR file of the GZIP-compressed \"gsn\" directory\nghcnd-hcn.tar.gz:  TAR file of the GZIP-compressed \"hcn\" directory\n\nghcnd-countries.txt:  List of country codes (FIPS) and names\nghcnd-inventory.txt:  File listing the periods of record for each station and \n                      element\nghcnd-stations.txt:   List of stations and their metadata (e.g., coordinates)\nghcnd-states.txt:     List of U.S. state and Canadian Province codes \n                      used in ghcnd-stations.txt\nghcnd-version.txt:    File that specifies the current version of GHCN Daily\nmingle-list.txt:      File that provides a list of each source and source identifiers\n  \t              associated with each GHCN-Daily station.\n\nreadme.txt:           This file\nstatus.txt:           Notes on the current status of GHCN-Daily\n\n--------------------------------------------------------------------------------\n--------------------------------------------------------------------------------\n\nIII. FORMAT OF DATA FILES (\".dly\" FILES)\n\nEach \".dly\" file contains data for one station.  The name of the file\ncorresponds to a station's identification code.  For example, \"USC00026481.dly\"\ncontains the data for the station with the identification code USC00026481).\n\nEach record in a file contains one month of daily data.  The variables on each\nline include the following:\n\n------------------------------\nVariable   Columns   Type\n------------------------------\nID            1-11   Character\nYEAR         12-15   Integer\nMONTH        16-17   Integer\nELEMENT      18-21   Character\nVALUE1       22-26   Integer\nMFLAG1       27-27   Character\nQFLAG1       28-28   Character\nSFLAG1       29-29   Character\nVALUE2       30-34   Integer\nMFLAG2       35-35   Character\nQFLAG2       36-36   Character\nSFLAG2       37-37   Character\n  .           .          .\n  .           .          .\n  .           .          .\nVALUE31    262-266   Integer\nMFLAG31    267-267   Character\nQFLAG31    268-268   Character\nSFLAG31    269-269   Character\n------------------------------\n\nThese variables have the following definitions:\n\nID         is the station identification code.  Please see \"ghcnd-stations.txt\"\n           for a complete list of stations and their metadata.\nYEAR       is the year of the record.\n\nMONTH      is the month of the record.\n\nELEMENT    is the element type.   There are five core elements as well as a number\n           of addition elements.  \n\t   \n\t   The five core elements are:\n\n           PRCP = Precipitation (tenths of mm)\n   \t   SNOW = Snowfall (mm)\n\t   SNWD = Snow depth (mm)\n           TMAX = Maximum temperature (tenths of degrees C)\n           TMIN = Minimum temperature (tenths of degrees C)\n\t   \n\t   The other elements are:\n\t   \n\t   ACMC = Average cloudiness midnight to midnight from 30-second \n\t          ceilometer data (percent)\n\t   ACMH = Average cloudiness midnight to midnight from \n\t          manual observations (percent)\n           ACSC = Average cloudiness sunrise to sunset from 30-second \n\t          ceilometer data (percent)\n\t   ACSH = Average cloudiness sunrise to sunset from manual \n\t          observations (percent)\n           ADPT = Average Dew Point Temperature for the day (tenths of degrees C)\n           ASLP = Average Sea Level Pressure for the day (hPa * 10)\n           ASTP = Average Station Level Pressure for the day (hPa * 10)\n           AWBT = Average Wet Bulb Temperature for the day (tenths of degrees C)\n           AWDR = Average daily wind direction (degrees)\n\t   AWND = Average daily wind speed (tenths of meters per second)\n\t   DAEV = Number of days included in the multiday evaporation\n\t          total (MDEV)\n\t   DAPR = Number of days included in the multiday precipiation \n\t          total (MDPR)\n           DASF = Number of days included in the multiday snowfall \n\t          total (MDSF)\t\t  \n\t   DATN = Number of days included in the multiday minimum temperature \n\t         (MDTN)\n\t   DATX = Number of days included in the multiday maximum temperature \n\t          (MDTX)\n           DAWM = Number of days included in the multiday wind movement\n\t          (MDWM)\n\t   DWPR = Number of days with non-zero precipitation included in \n\t          multiday precipitation total (MDPR)\n\t   EVAP = Evaporation of water from evaporation pan (tenths of mm)\n\t   FMTM = Time of fastest mile or fastest 1-minute wind \n\t          (hours and minutes, i.e., HHMM)\n\t   FRGB = Base of frozen ground layer (cm)\n\t   FRGT = Top of frozen ground layer (cm)\n\t   FRTH = Thickness of frozen ground layer (cm)\n\t   GAHT = Difference between river and gauge height (cm)\n\t   MDEV = Multiday evaporation total (tenths of mm; use with DAEV)\n\t   MDPR = Multiday precipitation total (tenths of mm; use with DAPR and \n\t          DWPR, if available)\n\t   MDSF = Multiday snowfall total \n\t   MDTN = Multiday minimum temperature (tenths of degrees C; use with \n\t          DATN)\n\t   MDTX = Multiday maximum temperature (tenths of degress C; use with \n\t          DATX)\n\t   MDWM = Multiday wind movement (km)\n           MNPN = Daily minimum temperature of water in an evaporation pan \n\t         (tenths of degrees C)\n           MXPN = Daily maximum temperature of water in an evaporation pan \n\t         (tenths of degrees C)\n\t   PGTM = Peak gust time (hours and minutes, i.e., HHMM)\n\t   PSUN = Daily percent of possible sunshine (percent)\n           RHAV = Average relative humidity for the day (percent)\n           RHMN = Minimum relative humidity for the day (percent)\n           RHMX = Maximum relative humidity for the day (percent)\n\t   SN*# = Minimum soil temperature (tenths of degrees C)\n\t          where * corresponds to a code\n\t          for ground cover and # corresponds to a code for soil \n\t\t  depth.  \n\t\t  \n\t\t  Ground cover codes include the following:\n\t\t  0 = unknown\n\t\t  1 = grass\n\t\t  2 = fallow\n\t\t  3 = bare ground\n\t\t  4 = brome grass\n\t\t  5 = sod\n\t\t  6 = straw multch\n\t\t  7 = grass muck\n\t\t  8 = bare muck\n\t\t  \n\t\t  Depth codes include the following:\n\t\t  1 = 5 cm\n\t\t  2 = 10 cm\n\t\t  3 = 20 cm\n\t\t  4 = 50 cm\n\t\t  5 = 100 cm\n\t\t  6 = 150 cm\n\t\t  7 = 180 cm\n\t\t  \n\t   SX*# = Maximum soil temperature (tenths of degrees C) \n\t          where * corresponds to a code for ground cover \n\t\t  and # corresponds to a code for soil depth. \n\t\t  See SN*# for ground cover and depth codes.\n           TAXN = Average daily temperature computed as \n                  (TMAX+TMIN)/2.0 (tenths of degrees C) \n           TAVG = Average daily temperature (tenths of degrees C)\n\t          [Note that TAVG from source 'S' corresponds\n\t\t   to an average of hourly readings for the period\n\t\t   ending at 2400 UTC rather than local midnight or other\n                   Local Standard Time according to a specific \n                   Met Service's protocol]\n                  [For sources other than 'S' TAVG is computed in a \n                   variety of ways including\n                   traditional fixed hours of the day whereas TAXN\n                  is solely computed as (TMAX+TMIN)/2.0]\n           THIC = Thickness of ice on water (tenths of mm)\t\n \t   TOBS = Temperature at the time of observation (tenths of degrees C)\n\t   TSUN = Daily total sunshine (minutes)\n\t   WDF1 = Direction of fastest 1-minute wind (degrees)\n\t   WDF2 = Direction of fastest 2-minute wind (degrees)\n\t   WDF5 = Direction of fastest 5-second wind (degrees)\n\t   WDFG = Direction of peak wind gust (degrees)\n\t   WDFI = Direction of highest instantaneous wind (degrees)\n\t   WDFM = Fastest mile wind direction (degrees)\n           WDMV = 24-hour wind movement (km)\t   \n           WESD = Water equivalent of snow on the ground (tenths of mm)\n\t   WESF = Water equivalent of snowfall (tenths of mm)\n\t   WSF1 = Fastest 1-minute wind speed (tenths of meters per second)\n\t   WSF2 = Fastest 2-minute wind speed (tenths of meters per second)\n\t   WSF5 = Fastest 5-second wind speed (tenths of meters per second)\n\t   WSFG = Peak gust wind speed (tenths of meters per second)\n\t   WSFI = Highest instantaneous wind speed (tenths of meters per second)\n\t   WSFM = Fastest mile wind speed (tenths of meters per second)\n\t   WT** = Weather Type where ** has one of the following values:\n\t   \n                  01 = Fog, ice fog, or freezing fog (may include heavy fog)\n                  02 = Heavy fog or heaving freezing fog (not always \n\t\t       distinquished from fog)\n                  03 = Thunder\n                  04 = Ice pellets, sleet, snow pellets, or small hail \n                  05 = Hail (may include small hail)\n                  06 = Glaze or rime \n                  07 = Dust, volcanic ash, blowing dust, blowing sand, or \n\t\t       blowing obstruction\n                  08 = Smoke or haze \n                  09 = Blowing or drifting snow\n                  10 = Tornado, waterspout, or funnel cloud \n                  11 = High or damaging winds\n                  12 = Blowing spray\n                  13 = Mist\n                  14 = Drizzle\n                  15 = Freezing drizzle \n                  16 = Rain (may include freezing rain, drizzle, and\n\t\t       freezing drizzle) \n                  17 = Freezing rain \n                  18 = Snow, snow pellets, snow grains, or ice crystals\n                  19 = Unknown source of precipitation \n                  21 = Ground fog \n                  22 = Ice fog or freezing fog\n\t\t  \n            WV** = Weather in the Vicinity where ** has one of the following \n\t           values:\n\t\t   \n\t\t   01 = Fog, ice fog, or freezing fog (may include heavy fog)\n\t\t   03 = Thunder\n\t\t   07 = Ash, dust, sand, or other blowing obstruction\n\t\t   18 = Snow or ice crystals\n\t\t   20 = Rain or snow shower\n\t\t   \nVALUE1     is the value on the first day of the month (missing = -9999).\n\nMFLAG1     is the measurement flag for the first day of the month.  There are\n           ten possible values:\n\n           Blank = no measurement information applicable\n           A     = precipitation total from one report of 6-hour precipitation amount\n           B     = precipitation total summed from two 12-hour totals\n           C     = precipitation total summed from 3 reports of 6-hour precipitation amount\n           D     = precipitation total summed from four six-hour totals\n           E     = precipitation total from 1 report of 12-hour precipitation amount\n           F     = precipitation total from the summation of 2 reports of 12-hour totals\n           G     = precipitation from 1 report of 24-hour precipitation amount\n\t   H     = for TMAX/TMIN/TAVG represents highest or lowest hourly temperature (TMAX or TMIN) \n\t           or the average of hourly values (TAVG)\n                   for PRCP Station reported '0' as the amount for the day (eg, from hourly, 6-hourly \n                   reports, etc.) or the amount could not be calculated, but at least one occurrence \n                   of precipitation was noted in the present weather observations. This could indicate \n                   that a trace occurred (or more if the value is missing).\n           I     = Station did not report any precipitation data for the day and did not report any \n                   occurrences of precipitation in its present weather observations\n\t   K     = converted from knots \n\t   L     = temperature appears to be lagged with respect to reported\n\t           hour of observation \n           O     = converted from oktas \n\t   P     = identified as \"missing presumed zero\" in DSI 3200 and 3206\n           T     = trace of precipitation, snowfall, or snow depth\n\t   W     = converted from 16-point WBAN code (for wind direction)\n\nQFLAG1     is the quality flag for the first day of the month.  There are \n           fourteen possible values:\n\n           Blank = did not fail any quality assurance check\n           D     = failed duplicate check\n           G     = failed gap check\n           I     = failed internal consistency check\n           K     = failed streak/frequent-value check\n\t   L     = failed check on length of multiday period \n           M     = failed megaconsistency check\n           N     = failed naught check\n           O     = failed climatological outlier check\n           R     = failed lagged range check\n           S     = failed spatial consistency check\n           T     = failed temporal consistency check\n           W     = temperature too warm for snow\n           X     = failed bounds check\n\t   Z     = flagged as a result of an official Datzilla \n\t           investigation\n\nSFLAG1     is the source flag for the first day of the month.  There are \n           thirty possible values (including blank, upper and \n\t   lower case letters):\n\n           Blank = No source (i.e., data value missing)\n           0     = U.S. Cooperative Summary of the Day (NCDC DSI-3200)\n           1     = CF6 (form F6) daily climate summaries from the U.S.\n                   National Weather Service\n           2     = Synoptic Summary of the Day (SSOD) \"version 2\", the \n                   successor to GSOD (source 'S')\n           6     = CDMP Cooperative Summary of the Day (NCDC DSI-3206)\n           7     = U.S. Cooperative Summary of the Day -- Transmitted \n\t           via WxCoder3 (NCDC DSI-3207)\n           A     = U.S. Automated Surface Observing System (ASOS) \n                   real-time data (since January 1, 2006)\n\t   a     = Australian data from the Australian Bureau of Meteorology\n           B     = U.S. ASOS data for October 2000-December 2005 (NCDC \n                   DSI-3211)\n\t   b     = Belarus update\n\t   C     = Environment Canada\n\t   D     = Short time delay US National Weather Service CF6 daily \n\t           summaries provided by the High Plains Regional Climate\n\t\t   Center\n           d     = Short time delay US National Weather Service Daily\n                   Summary Message (DSMs) provided by the High Plains \n                   Regional Climate Center\n\t   E     = European Climate Assessment and Dataset (Klein Tank \n\t           et al., 2002)\t   \n           F     = U.S. Fort data \n           G     = Official Global Climate Observing System (GCOS) or \n                   other government-supplied data\n           H     = High Plains Regional Climate Center real-time data\n           I     = International collection (non U.S. data received through\n\t           personal contacts)\n           K     = U.S. Cooperative Summary of the Day data digitized from\n\t           paper observer forms (from 2011 to present)\n           M     = Monthly METAR Extract (additional ASOS data)\n\t   f     = Data provided courtesy of the Fiji Met Service\n           m     = Data from the Mexican National Water Commission (Comision\n\t           National del Agua -- CONAGUA)\n\t   N     = Community Collaborative Rain, Hail,and Snow (CoCoRaHS)\n\t   Q     = Data from several African countries that had been \n\t           \"quarantined\", that is, withheld from public release\n\t\t   until permission was granted from the respective \n\t           meteorological services\n           R     = NCEI Reference Network Database (Climate Reference Network\n\t           and Regional Climate Reference Network)\n\t   r     = All-Russian Research Institute of Hydrometeorological \n\t           Information-World Data Center\n           S     = Global Summary of the Day (NCDC DSI-9618)\n                   NOTE: \"S\" values are derived from hourly synoptic reports\n                   exchanged on the Global Telecommunications System (GTS).\n                   Daily values derived in this fashion may differ significantly\n                   from \"true\" daily data, particularly for precipitation\n                   (i.e., use with caution).\n\t   s     = China Meteorological Administration/National Meteorological Information Center/\n\t           Climatic Data Center (http://cdc.cma.gov.cn)\n           T     = SNOwpack TELemtry (SNOTEL) data obtained from the U.S. \n\t           Department of Agriculture's Natural Resources Conservation Service\n\t   U     = Remote Automatic Weather Station (RAWS) data obtained\n\t           from the Western Regional Climate Center\t   \n\t   u     = Ukraine update\t   \n\t   W     = WBAN/ASOS Summary of the Day from NCDC's Integrated \n\t           Surface Data (ISD).  \n           X     = U.S. First-Order Summary of the Day (NCDC DSI-3210)\n\t   Z     = Datzilla official additions or replacements \n\t   z     = Uzbekistan update\n\t   \n\t   When data are available for the same time from more than one source,\n\t   the highest priority source is chosen according to the following\n\t   priority order (from highest to lowest):\n\t   Z,R,W,D,d,1,0,6,C,X,K,7,F,B,M,f,m,r,E,z,u,b,s,a,G,Q,I,A,N,T,U,H,2,S\n\t   \n\t   \nVALUE2     is the value on the second day of the month\n\nMFLAG2     is the measurement flag for the second day of the month.\n\nQFLAG2     is the quality flag for the second day of the month.\n\nSFLAG2     is the source flag for the second day of the month.\n\n... and so on through the 31st day of the month.  Note: If the month has less \nthan 31 days, then the remaining variables are set to missing (e.g., for April, \nVALUE31 = -9999, MFLAG31 = blank, QFLAG31 = blank, SFLAG31 = blank).\n\n--------------------------------------------------------------------------------\n--------------------------------------------------------------------------------\n\nIV. FORMAT OF \"ghcnd-stations.txt\"\n\n------------------------------\nVariable   Columns   Type\n------------------------------\nID            1-11   Character\nLATITUDE     13-20   Real\nLONGITUDE    22-30   Real\nELEVATION    32-37   Real\nSTATE        39-40   Character\nNAME         42-71   Character\nGSN FLAG     73-75   Character\nHCN/CRN FLAG 77-79   Character\nWMO ID       81-85   Character\n------------------------------\n\nThese variables have the following definitions:\n\nID         is the station identification code.  Note that the first two\n           characters denote the FIPS  country code, the third character \n           is a network code that identifies the station numbering system \n           used, and the remaining eight characters contain the actual \n           station ID. \n\n           See \"ghcnd-countries.txt\" for a complete list of country codes.\n\t   See \"ghcnd-states.txt\" for a list of state/province/territory codes.\n\n           The network code  has the following five values:\n\n           0 = unspecified (station identified by up to eight \n\t       alphanumeric characters)\n\t   1 = Community Collaborative Rain, Hail,and Snow (CoCoRaHS)\n\t       based identification number.  To ensure consistency with\n\t       with GHCN Daily, all numbers in the original CoCoRaHS IDs\n\t       have been left-filled to make them all four digits long. \n\t       In addition, the characters \"-\" and \"_\" have been removed \n\t       to ensure that the IDs do not exceed 11 characters when \n\t       preceded by \"US1\". For example, the CoCoRaHS ID \n\t       \"AZ-MR-156\" becomes \"US1AZMR0156\" in GHCN-Daily\n           C = U.S. Cooperative Network identification number (last six \n               characters of the GHCN-Daily ID)\n\t   E = Identification number used in the ECA&D non-blended\n\t       dataset\n\t   M = World Meteorological Organization ID (last five\n\t       characters of the GHCN-Daily ID)\n\t   N = Identification number used in data supplied by a \n\t       National Meteorological or Hydrological Center\n           P = \"Pre-Coop\" (an internal identifier assigned by NCEI for station\n               records collected prior to the establishment of the U.S. Weather\n               Bureau and their management of the U.S. Cooperative (Coop) \n               Observer Program\n\t   R = U.S. Interagency Remote Automatic Weather Station (RAWS)\n\t       identifier\n\t   S = U.S. Natural Resources Conservation Service SNOwpack\n\t       TELemtry (SNOTEL) station identifier\n           W = WBAN identification number (last five characters of the \n               GHCN-Daily ID)\n\nLATITUDE   is latitude of the station (in decimal degrees).\n\nLONGITUDE  is the longitude of the station (in decimal degrees).\n\nELEVATION  is the elevation of the station (in meters, missing = -999.9).\n\n\nSTATE      is the U.S. postal code for the state (for U.S. stations only).\n\nNAME       is the name of the station.\n\nGSN FLAG   is a flag that indicates whether the station is part of the GCOS\n           Surface Network (GSN). The flag is assigned by cross-referencing \n           the number in the WMOID field with the official list of GSN \n           stations. There are two possible values:\n\n           Blank = non-GSN station or WMO Station number not available\n           GSN   = GSN station \n\nHCN/      is a flag that indicates whether the station is part of the U.S.\nCRN FLAG  Historical Climatology Network (HCN) or U.S. Climate Refererence\n          Network (CRN).  There are three possible values:\n\n           Blank = Not a member of the U.S. Historical Climatology \n\t           or U.S. Climate Reference Networks\n           HCN   = U.S. Historical Climatology Network station\n\t   CRN   = U.S. Climate Reference Network or U.S. Regional Climate \n\t           Network Station\n\nWMO ID     is the World Meteorological Organization (WMO) number for the\n           station.  If the station has no WMO number (or one has not yet \n\t   been matched to this station), then the field is blank.  \n\n--------------------------------------------------------------------------------\n--------------------------------------------------------------------------------\n\nV. FORMAT OF \"ghcnd-countries.txt\"\n\n------------------------------\nVariable   Columns   Type\n------------------------------\nCODE          1-2    Character\nNAME          4-64   Character\n------------------------------\n\nThese variables have the following definitions:\n\nCODE       is the FIPS country code of the country where the station is \n           located (from FIPS Publication 10-4 at \n           www.cia.gov/cia/publications/factbook/appendix/appendix-d.html).\n\nNAME       is the name of the country.\n\n--------------------------------------------------------------------------------\n--------------------------------------------------------------------------------\n\nVI. FORMAT OF \"ghcnd-states.txt\"\n\n------------------------------\nVariable   Columns   Type\n------------------------------\nCODE          1-2    Character\nNAME         4-50    Character\n------------------------------\n\nThese variables have the following definitions:\n\nCODE       is the POSTAL code of the U.S. state/territory or Canadian \n           province where the station is located \n\nNAME       is the name of the state, territory or province.\n\n--------------------------------------------------------------------------------\n--------------------------------------------------------------------------------\n\nVII. FORMAT OF \"ghcnd-inventory.txt\"\n\n------------------------------\nVariable   Columns   Type\n------------------------------\nID            1-11   Character\nLATITUDE     13-20   Real\nLONGITUDE    22-30   Real\nELEMENT      32-35   Character\nFIRSTYEAR    37-40   Integer\nLASTYEAR     42-45   Integer\n------------------------------\n\nThese variables have the following definitions:\n\nID         is the station identification code.  Please see \"ghcnd-stations.txt\"\n           for a complete list of stations and their metadata.\n\nLATITUDE   is the latitude of the station (in decimal degrees).\n\nLONGITUDE  is the longitude of the station (in decimal degrees).\n\nELEMENT    is the element type.  See section III for a definition of elements.\n\nFIRSTYEAR  is the first year of unflagged data for the given element.\n\nLASTYEAR   is the last year of unflagged data for the given element.\n\n--------------------------------------------------------------------------------\n--------------------------------------------------------------------------------\nVIII. FORMAT OF \"mingle-list.txt\"\n\n--------------------------------------------------------------------------------\nVariable                                  Column(s)   Type\n--------------------------------------------------------------------------------\nGHCN-Daily Identifier (ID)                      1-11       Character\nNo of sources assoc. with the station (N)       13-14      Integer\nSource Code of lowest ranking source            16         Character\nSource Idenfier of lowest ranking source        18-28      Character\nSource Code of next lowest ranking source       30         Character\nSource Identifier of next lowest ranking source 32-42\n.\n.\n.\nUp to Nth (highest ranking) source code and source identifier'\n[See section III for a definition of source codes]\n\nIX.  REFERENCES\n\nThe journal article describing GHCN-Daily is:\nMenne, M.J., I. Durre, R.S. Vose, B.E. Gleason, and T.G. Houston, 2012:  An overview \nof the Global Historical Climatology Network-Daily Database.  Journal of Atmospheric \nand Oceanic Technology, 29, 897-910, doi:10.1175/JTECH-D-11-00103.1.\n\nTo acknowledge the specific version of the dataset used, please cite:\nMenne, M.J., I. Durre, B. Korzeniewski, S. McNeal, K. Thomas, X. Yin, S. Anthony, R. Ray, \nR.S. Vose, B.E.Gleason, and T.G. Houston, 2012: Global Historical Climatology Network - \nDaily (GHCN-Daily), Version 3. [indicate subset used following decimal, \ne.g. Version 3.12]. \nNOAA National Climatic Data Center. http://doi.org/10.7289/V5D21VHZ [access date].\n\nKlein Tank, A.M.G. and Coauthors, 2002. Daily dataset of 20th-century surface\nair temperature and precipitation series for the European Climate Assessment.\nInt. J. of Climatol., 22, 1441-1453.\nData and metadata available at http://eca.knmi.nl\n\n\n\nFor additional information, please send an e-mail to ncdc.ghcnd@noaa.gov.\n",
+        "url": "https://noaa-ghcn-pds.s3.amazonaws.com/readme.txt"
+      },
+      "attestation": {
+        "dictionary_digest": "9e480ceccf1191bb4f3b2e2b6ec9112c4c9c3fe0e0781b08d4ce8c0874befc43",
+        "digest": "c4589477b30a97b4f29ce6d23c1d8874e92ebe4fdc1357f314bf84e791daeb37",
+        "plan_digest": "910487a7665637720d147ccd995d2118ae8406469e6fcb3bd816fee9644cb389",
+        "profile": "ghcn-daily-scalar-v1",
+        "reason_provenance": "leader-authored explanation; semantic fields and citations validated",
+        "semantics": {
+          "aggregation": "DAILY_TOTAL",
+          "citations": [
+            {
+              "end_line": 149,
+              "quote": "           PRCP = Precipitation (tenths of mm)",
+              "start_line": 149
+            },
+            {
+              "end_line": 305,
+              "quote": "VALUE1     is the value on the first day of the month (missing = -9999).",
+              "start_line": 305
+            },
+            {
+              "end_line": 331,
+              "quote": "           T     = trace of precipitation, snowfall, or snow depth",
+              "start_line": 331
+            },
+            {
+              "end_line": 337,
+              "quote": "           Blank = did not fail any quality assurance check",
+              "start_line": 337
+            }
+          ],
+          "missing_value": -9999,
+          "quality_policy": "NONBLANK_QFLAG_EXCLUDE",
+          "quantity": "PRECIPITATION",
+          "reason": "Element PRCP defined as daily total precipitation in tenths of mm, missing value explicitly -9999, quality flag blank indicates no failed check, measurement flag T indicates trace.",
+          "source_unit": "DECI_MILLIMETRE",
+          "support": "SUPPORTED",
+          "trace_policy": "MFLAG_T_NONEXACT"
+        },
+        "source_sha256": "0e4e6f0e6947cf1add884c328a01760f31c56ef5fb86b85ed57dd5dc4c4aeaa6",
+        "status": "ACCEPTED",
+        "target": {
+          "aggregation": "DAILY_TOTAL",
+          "quantity": "PRECIPITATION",
+          "unit": "mm"
+        }
+      },
+      "receipt": {
+        "attestation_digest": "c4589477b30a97b4f29ce6d23c1d8874e92ebe4fdc1357f314bf84e791daeb37",
+        "digest": "508ae772fee6541c9c5b1be3d15f2b8b6ee2d4006533ec16e055bd2516311826",
+        "id": "synthetic-precipitation-v1",
+        "input_provenance": "caller-supplied; NOT authenticated NOAA observations",
+        "plan_digest": "910487a7665637720d147ccd995d2118ae8406469e6fcb3bd816fee9644cb389",
+        "plan_id": "prcp-millimetres-v1",
+        "plan_owner": "0x9693a213f98b03e52cc67645fa2d9c457a9c6c44",
+        "profile": "ghcn-daily-scalar-v1",
+        "recorder": "0x50c46dcb46b2a31d769b1200600a0e91bd60aaf8",
+        "results": [
+          {
+            "input": {
+              "mflag": "",
+              "qflag": "",
+              "raw": 123,
+              "sflag": "S"
+            },
+            "normalized": {
+              "denominator": 10,
+              "numerator": 123,
+              "unit": "mm"
+            },
+            "reason": "Unflagged caller-supplied scalar; not independently quality-verified",
+            "status": "VALUE"
+          },
+          {
+            "input": {
+              "mflag": "",
+              "qflag": "",
+              "raw": 0,
+              "sflag": "S"
+            },
+            "normalized": {
+              "denominator": 1,
+              "numerator": 0,
+              "unit": "mm"
+            },
+            "reason": "Unflagged caller-supplied scalar; not independently quality-verified",
+            "status": "VALUE"
+          },
+          {
+            "input": {
+              "mflag": "T",
+              "qflag": "",
+              "raw": 0,
+              "sflag": "S"
+            },
+            "normalized": null,
+            "reason": "Trace is non-exact and must not be converted to a numerical zero",
+            "status": "TRACE"
+          },
+          {
+            "input": {
+              "mflag": "",
+              "qflag": "",
+              "raw": -9999,
+              "sflag": "S"
+            },
+            "normalized": null,
+            "reason": "Dictionary missing sentinel; no numerical value",
+            "status": "MISSING"
+          },
+          {
+            "input": {
+              "mflag": "",
+              "qflag": "X",
+              "raw": 123,
+              "sflag": "S"
+            },
+            "normalized": null,
+            "reason": "Nonblank quality flag retained; excluded from normalization",
+            "status": "QUALITY_FLAGGED"
+          },
+          {
+            "input": {
+              "mflag": "",
+              "qflag": "",
+              "raw": -1,
+              "sflag": "S"
+            },
+            "normalized": null,
+            "reason": "Negative non-temperature amount is outside this decoder profile",
+            "status": "INVALID_VALUE"
+          },
+          {
+            "input": {
+              "mflag": "P",
+              "qflag": "",
+              "raw": 123,
+              "sflag": "S"
+            },
+            "normalized": null,
+            "reason": "Nonblank measurement flag needs interpretation outside this conservative profile",
+            "status": "MEASUREMENT_FLAGGED"
+          },
+          {
+            "input": {
+              "mflag": "",
+              "qflag": "",
+              "raw": 123,
+              "sflag": "?"
+            },
+            "normalized": null,
+            "reason": "Unknown measurement/source flag or absent source; excluded",
+            "status": "UNKNOWN_FLAGS"
+          }
+        ],
+        "samples": [
+          {
+            "mflag": "",
+            "qflag": "",
+            "raw": 123,
+            "sflag": "S"
+          },
+          {
+            "mflag": "",
+            "qflag": "",
+            "raw": 0,
+            "sflag": "S"
+          },
+          {
+            "mflag": "T",
+            "qflag": "",
+            "raw": 0,
+            "sflag": "S"
+          },
+          {
+            "mflag": "",
+            "qflag": "",
+            "raw": -9999,
+            "sflag": "S"
+          },
+          {
+            "mflag": "",
+            "qflag": "X",
+            "raw": 123,
+            "sflag": "S"
+          },
+          {
+            "mflag": "",
+            "qflag": "",
+            "raw": -1,
+            "sflag": "S"
+          },
+          {
+            "mflag": "P",
+            "qflag": "",
+            "raw": 123,
+            "sflag": "S"
+          },
+          {
+            "mflag": "",
+            "qflag": "",
+            "raw": 123,
+            "sflag": "?"
+          }
+        ],
+        "samples_digest": "899a2335f3c9f56b6b588888e6627853c95ccccd5d1ed9984f8c19f8edad2405",
+        "source_sha256": "0e4e6f0e6947cf1add884c328a01760f31c56ef5fb86b85ed57dd5dc4c4aeaa6"
+      },
+      "preview": [
+        {
+          "input": {
+            "mflag": "",
+            "qflag": "",
+            "raw": 123,
+            "sflag": "S"
+          },
+          "normalized": {
+            "denominator": 10,
+            "numerator": 123,
+            "unit": "mm"
+          },
+          "reason": "Unflagged caller-supplied scalar; not independently quality-verified",
+          "status": "VALUE"
+        },
+        {
+          "input": {
+            "mflag": "",
+            "qflag": "",
+            "raw": 0,
+            "sflag": "S"
+          },
+          "normalized": {
+            "denominator": 1,
+            "numerator": 0,
+            "unit": "mm"
+          },
+          "reason": "Unflagged caller-supplied scalar; not independently quality-verified",
+          "status": "VALUE"
+        },
+        {
+          "input": {
+            "mflag": "T",
+            "qflag": "",
+            "raw": 0,
+            "sflag": "S"
+          },
+          "normalized": null,
+          "reason": "Trace is non-exact and must not be converted to a numerical zero",
+          "status": "TRACE"
+        },
+        {
+          "input": {
+            "mflag": "",
+            "qflag": "",
+            "raw": -9999,
+            "sflag": "S"
+          },
+          "normalized": null,
+          "reason": "Dictionary missing sentinel; no numerical value",
+          "status": "MISSING"
+        },
+        {
+          "input": {
+            "mflag": "",
+            "qflag": "X",
+            "raw": 123,
+            "sflag": "S"
+          },
+          "normalized": null,
+          "reason": "Nonblank quality flag retained; excluded from normalization",
+          "status": "QUALITY_FLAGGED"
+        },
+        {
+          "input": {
+            "mflag": "",
+            "qflag": "",
+            "raw": -1,
+            "sflag": "S"
+          },
+          "normalized": null,
+          "reason": "Negative non-temperature amount is outside this decoder profile",
+          "status": "INVALID_VALUE"
+        },
+        {
+          "input": {
+            "mflag": "P",
+            "qflag": "",
+            "raw": 123,
+            "sflag": "S"
+          },
+          "normalized": null,
+          "reason": "Nonblank measurement flag needs interpretation outside this conservative profile",
+          "status": "MEASUREMENT_FLAGGED"
+        },
+        {
+          "input": {
+            "mflag": "",
+            "qflag": "",
+            "raw": 123,
+            "sflag": "?"
+          },
+          "normalized": null,
+          "reason": "Unknown measurement/source flag or absent source; excluded",
+          "status": "UNKNOWN_FLAGS"
+        }
+      ],
+      "previewReadStrategy": "One sample per read due to observed Studionet gen_call long-RLP failure; full batch recorded in one transaction and compared row-for-row."
+    },
+    {
+      "plan": {
+        "dictionary_sha256": "0e4e6f0e6947cf1add884c328a01760f31c56ef5fb86b85ed57dd5dc4c4aeaa6",
+        "digest": "410e687c97d83a1edf522de8e3397c751f97c67dfcc72aa4fc774ca5af646d1f",
+        "element": "TMAX",
+        "id": "tmax-incorrect-mean-v1",
+        "owner": "0x9693a213f98b03e52cc67645fa2d9c457a9c6c44",
+        "profile": "ghcn-daily-scalar-v1",
+        "source_url": "https://noaa-ghcn-pds.s3.amazonaws.com/readme.txt",
+        "target": {
+          "aggregation": "DAILY_MEAN",
+          "quantity": "TEMPERATURE",
+          "unit": "degC"
+        }
+      },
+      "dictionary": {
+        "byte_length": 29587,
+        "digest": "9e480ceccf1191bb4f3b2e2b6ec9112c4c9c3fe0e0781b08d4ce8c0874befc43",
+        "line_count": 645,
+        "sha256": "0e4e6f0e6947cf1add884c328a01760f31c56ef5fb86b85ed57dd5dc4c4aeaa6",
+        "text": "README FILE FOR DAILY GLOBAL HISTORICAL CLIMATOLOGY NETWORK (GHCN-DAILY) \nVersion 3.35\n\n--------------------------------------------------------------------------------\nHow to cite:\n\nNote that the GHCN-Daily dataset itself now has a DOI (Digital Object Identifier)\nso it may be relevant to cite both the methods/overview journal article as well \nas the specific version of the dataset used.\n\nThe journal article describing GHCN-Daily is:\nMenne, M.J., I. Durre, R.S. Vose, B.E. Gleason, and T.G. Houston, 2012:  An overview \nof the Global Historical Climatology Network-Daily Database.  Journal of Atmospheric \nand Oceanic Technology, 29, 897-910, doi:10.1175/JTECH-D-11-00103.1.\n\nTo acknowledge the specific version of the dataset used, please cite:\nMenne, M.J., I. Durre, B. Korzeniewski, S. McNeill, K. Thomas, X. Yin, S. Anthony, R. Ray, \nR.S. Vose, B.E.Gleason, and T.G. Houston, 2012: Global Historical Climatology Network - \nDaily (GHCN-Daily), Version 3. [indicate subset used following decimal, \ne.g. Version 3.12]. \nNOAA National Climatic Data Center. http://doi.org/10.7289/V5D21VHZ [access date].\n--------------------------------------------------------------------------------\n\nI. DOWNLOAD QUICK START\n\nStart by downloading \"ghcnd-stations.txt,\" which has metadata for all stations.\n\nThen download one of the following TAR files:\n\n  - \"ghcnd-all.tar.gz\" if you want all of GHCN-Daily, OR\n  - \"ghcnd-gsn.tar.gz\" if you only want the GCOS Surface Network (GSN), OR\n  - \"ghcnd-hcn.tar.gz\" if you only want the U.S. Historical Climatology Network \n    (U.S. HCN).\n\nThen uncompress and untar the contents of the tar file, \ne.g., by using the following Linux command:\n\ntar xzvf ghcnd_xxx.tar.gz\n\nWhere \"xxx\" stands for \"all\", \"hcn\", or \"gsn\" as applicable. The files will be \nextracted into a subdirectory under the directory where the command is issued.\n\nALTERNATIVELY, if you only need data for one station:\n\n  - Find the station's name in \"ghcnd-stations.txt\" and note its station\n    identification code (e.g., PHOENIX AP (Airport) is \"USW00023183\"); and\n  - Download the data file (i.e., \".dly\" file) that corresponds to this code\n    (e.g., \"USW00023183.dly\" has the data for PHOENIX AP).  \n    Note that the \".dly\" file is located in the \"all\" subdirectory.\n\n--------------------------------------------------------------------------------\n--------------------------------------------------------------------------------\n\nII. CONTENTS OF ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily\n\nall:                  Directory with \".dly\" files for all of GHCN-Daily\ngsn:                  Directory with \".dly\" files for the GCOS Surface Network \n                      (GSN)\nhcn:                  Directory with \".dly\" files for U.S. HCN\nby_year:              Directory with GHCN Daily files parsed into yearly\n                      subsets with observation times where available.  See the\n\t\t      /by_year/readme.txt and \n\t\t      /by_year/ghcn-daily-by_year-format.rtf \n\t\t      files for further details\nby_station:           Directory of GHCN daily station data in period of record\n                      comma separate (csv) files.  See readme-by_station.txt\n                      for additional details\ngrid:\t              Directory with the GHCN-Daily gridded dataset known \n                      as HadGHCND\npapers:\t\t      Directory with pdf versions of journal articles relevant \n                      to the GHCN-Daily dataset\nfigures:\t      Directory containing figures that summarize the inventory \n                      and processing of GHCN-Daily station records\nsuperghcnd:\t      Directory containing a comma delimited format of GHCN-Daily\n                      with station metadata integrated into the data.  Two files \n\t\t      are provided each day.  The superghcnd_full file contains\n\t\t      all GHCN-Daily data in comma delimited format and the \n\t\t      superghcnd_diff file which contains the differences in\n\t\t      the dataset between two successive update runs.  See\n\t\t      the readme.txt file in the superghcnd directory for more\n\t\t      details.\n\nghcnd-all.tar.gz:  TAR file of the GZIP-compressed files in the \"all\" directory\nghcnd-gsn.tar.gz:  TAR file of the GZIP-compressed \"gsn\" directory\nghcnd-hcn.tar.gz:  TAR file of the GZIP-compressed \"hcn\" directory\n\nghcnd-countries.txt:  List of country codes (FIPS) and names\nghcnd-inventory.txt:  File listing the periods of record for each station and \n                      element\nghcnd-stations.txt:   List of stations and their metadata (e.g., coordinates)\nghcnd-states.txt:     List of U.S. state and Canadian Province codes \n                      used in ghcnd-stations.txt\nghcnd-version.txt:    File that specifies the current version of GHCN Daily\nmingle-list.txt:      File that provides a list of each source and source identifiers\n  \t              associated with each GHCN-Daily station.\n\nreadme.txt:           This file\nstatus.txt:           Notes on the current status of GHCN-Daily\n\n--------------------------------------------------------------------------------\n--------------------------------------------------------------------------------\n\nIII. FORMAT OF DATA FILES (\".dly\" FILES)\n\nEach \".dly\" file contains data for one station.  The name of the file\ncorresponds to a station's identification code.  For example, \"USC00026481.dly\"\ncontains the data for the station with the identification code USC00026481).\n\nEach record in a file contains one month of daily data.  The variables on each\nline include the following:\n\n------------------------------\nVariable   Columns   Type\n------------------------------\nID            1-11   Character\nYEAR         12-15   Integer\nMONTH        16-17   Integer\nELEMENT      18-21   Character\nVALUE1       22-26   Integer\nMFLAG1       27-27   Character\nQFLAG1       28-28   Character\nSFLAG1       29-29   Character\nVALUE2       30-34   Integer\nMFLAG2       35-35   Character\nQFLAG2       36-36   Character\nSFLAG2       37-37   Character\n  .           .          .\n  .           .          .\n  .           .          .\nVALUE31    262-266   Integer\nMFLAG31    267-267   Character\nQFLAG31    268-268   Character\nSFLAG31    269-269   Character\n------------------------------\n\nThese variables have the following definitions:\n\nID         is the station identification code.  Please see \"ghcnd-stations.txt\"\n           for a complete list of stations and their metadata.\nYEAR       is the year of the record.\n\nMONTH      is the month of the record.\n\nELEMENT    is the element type.   There are five core elements as well as a number\n           of addition elements.  \n\t   \n\t   The five core elements are:\n\n           PRCP = Precipitation (tenths of mm)\n   \t   SNOW = Snowfall (mm)\n\t   SNWD = Snow depth (mm)\n           TMAX = Maximum temperature (tenths of degrees C)\n           TMIN = Minimum temperature (tenths of degrees C)\n\t   \n\t   The other elements are:\n\t   \n\t   ACMC = Average cloudiness midnight to midnight from 30-second \n\t          ceilometer data (percent)\n\t   ACMH = Average cloudiness midnight to midnight from \n\t          manual observations (percent)\n           ACSC = Average cloudiness sunrise to sunset from 30-second \n\t          ceilometer data (percent)\n\t   ACSH = Average cloudiness sunrise to sunset from manual \n\t          observations (percent)\n           ADPT = Average Dew Point Temperature for the day (tenths of degrees C)\n           ASLP = Average Sea Level Pressure for the day (hPa * 10)\n           ASTP = Average Station Level Pressure for the day (hPa * 10)\n           AWBT = Average Wet Bulb Temperature for the day (tenths of degrees C)\n           AWDR = Average daily wind direction (degrees)\n\t   AWND = Average daily wind speed (tenths of meters per second)\n\t   DAEV = Number of days included in the multiday evaporation\n\t          total (MDEV)\n\t   DAPR = Number of days included in the multiday precipiation \n\t          total (MDPR)\n           DASF = Number of days included in the multiday snowfall \n\t          total (MDSF)\t\t  \n\t   DATN = Number of days included in the multiday minimum temperature \n\t         (MDTN)\n\t   DATX = Number of days included in the multiday maximum temperature \n\t          (MDTX)\n           DAWM = Number of days included in the multiday wind movement\n\t          (MDWM)\n\t   DWPR = Number of days with non-zero precipitation included in \n\t          multiday precipitation total (MDPR)\n\t   EVAP = Evaporation of water from evaporation pan (tenths of mm)\n\t   FMTM = Time of fastest mile or fastest 1-minute wind \n\t          (hours and minutes, i.e., HHMM)\n\t   FRGB = Base of frozen ground layer (cm)\n\t   FRGT = Top of frozen ground layer (cm)\n\t   FRTH = Thickness of frozen ground layer (cm)\n\t   GAHT = Difference between river and gauge height (cm)\n\t   MDEV = Multiday evaporation total (tenths of mm; use with DAEV)\n\t   MDPR = Multiday precipitation total (tenths of mm; use with DAPR and \n\t          DWPR, if available)\n\t   MDSF = Multiday snowfall total \n\t   MDTN = Multiday minimum temperature (tenths of degrees C; use with \n\t          DATN)\n\t   MDTX = Multiday maximum temperature (tenths of degress C; use with \n\t          DATX)\n\t   MDWM = Multiday wind movement (km)\n           MNPN = Daily minimum temperature of water in an evaporation pan \n\t         (tenths of degrees C)\n           MXPN = Daily maximum temperature of water in an evaporation pan \n\t         (tenths of degrees C)\n\t   PGTM = Peak gust time (hours and minutes, i.e., HHMM)\n\t   PSUN = Daily percent of possible sunshine (percent)\n           RHAV = Average relative humidity for the day (percent)\n           RHMN = Minimum relative humidity for the day (percent)\n           RHMX = Maximum relative humidity for the day (percent)\n\t   SN*# = Minimum soil temperature (tenths of degrees C)\n\t          where * corresponds to a code\n\t          for ground cover and # corresponds to a code for soil \n\t\t  depth.  \n\t\t  \n\t\t  Ground cover codes include the following:\n\t\t  0 = unknown\n\t\t  1 = grass\n\t\t  2 = fallow\n\t\t  3 = bare ground\n\t\t  4 = brome grass\n\t\t  5 = sod\n\t\t  6 = straw multch\n\t\t  7 = grass muck\n\t\t  8 = bare muck\n\t\t  \n\t\t  Depth codes include the following:\n\t\t  1 = 5 cm\n\t\t  2 = 10 cm\n\t\t  3 = 20 cm\n\t\t  4 = 50 cm\n\t\t  5 = 100 cm\n\t\t  6 = 150 cm\n\t\t  7 = 180 cm\n\t\t  \n\t   SX*# = Maximum soil temperature (tenths of degrees C) \n\t          where * corresponds to a code for ground cover \n\t\t  and # corresponds to a code for soil depth. \n\t\t  See SN*# for ground cover and depth codes.\n           TAXN = Average daily temperature computed as \n                  (TMAX+TMIN)/2.0 (tenths of degrees C) \n           TAVG = Average daily temperature (tenths of degrees C)\n\t          [Note that TAVG from source 'S' corresponds\n\t\t   to an average of hourly readings for the period\n\t\t   ending at 2400 UTC rather than local midnight or other\n                   Local Standard Time according to a specific \n                   Met Service's protocol]\n                  [For sources other than 'S' TAVG is computed in a \n                   variety of ways including\n                   traditional fixed hours of the day whereas TAXN\n                  is solely computed as (TMAX+TMIN)/2.0]\n           THIC = Thickness of ice on water (tenths of mm)\t\n \t   TOBS = Temperature at the time of observation (tenths of degrees C)\n\t   TSUN = Daily total sunshine (minutes)\n\t   WDF1 = Direction of fastest 1-minute wind (degrees)\n\t   WDF2 = Direction of fastest 2-minute wind (degrees)\n\t   WDF5 = Direction of fastest 5-second wind (degrees)\n\t   WDFG = Direction of peak wind gust (degrees)\n\t   WDFI = Direction of highest instantaneous wind (degrees)\n\t   WDFM = Fastest mile wind direction (degrees)\n           WDMV = 24-hour wind movement (km)\t   \n           WESD = Water equivalent of snow on the ground (tenths of mm)\n\t   WESF = Water equivalent of snowfall (tenths of mm)\n\t   WSF1 = Fastest 1-minute wind speed (tenths of meters per second)\n\t   WSF2 = Fastest 2-minute wind speed (tenths of meters per second)\n\t   WSF5 = Fastest 5-second wind speed (tenths of meters per second)\n\t   WSFG = Peak gust wind speed (tenths of meters per second)\n\t   WSFI = Highest instantaneous wind speed (tenths of meters per second)\n\t   WSFM = Fastest mile wind speed (tenths of meters per second)\n\t   WT** = Weather Type where ** has one of the following values:\n\t   \n                  01 = Fog, ice fog, or freezing fog (may include heavy fog)\n                  02 = Heavy fog or heaving freezing fog (not always \n\t\t       distinquished from fog)\n                  03 = Thunder\n                  04 = Ice pellets, sleet, snow pellets, or small hail \n                  05 = Hail (may include small hail)\n                  06 = Glaze or rime \n                  07 = Dust, volcanic ash, blowing dust, blowing sand, or \n\t\t       blowing obstruction\n                  08 = Smoke or haze \n                  09 = Blowing or drifting snow\n                  10 = Tornado, waterspout, or funnel cloud \n                  11 = High or damaging winds\n                  12 = Blowing spray\n                  13 = Mist\n                  14 = Drizzle\n                  15 = Freezing drizzle \n                  16 = Rain (may include freezing rain, drizzle, and\n\t\t       freezing drizzle) \n                  17 = Freezing rain \n                  18 = Snow, snow pellets, snow grains, or ice crystals\n                  19 = Unknown source of precipitation \n                  21 = Ground fog \n                  22 = Ice fog or freezing fog\n\t\t  \n            WV** = Weather in the Vicinity where ** has one of the following \n\t           values:\n\t\t   \n\t\t   01 = Fog, ice fog, or freezing fog (may include heavy fog)\n\t\t   03 = Thunder\n\t\t   07 = Ash, dust, sand, or other blowing obstruction\n\t\t   18 = Snow or ice crystals\n\t\t   20 = Rain or snow shower\n\t\t   \nVALUE1     is the value on the first day of the month (missing = -9999).\n\nMFLAG1     is the measurement flag for the first day of the month.  There are\n           ten possible values:\n\n           Blank = no measurement information applicable\n           A     = precipitation total from one report of 6-hour precipitation amount\n           B     = precipitation total summed from two 12-hour totals\n           C     = precipitation total summed from 3 reports of 6-hour precipitation amount\n           D     = precipitation total summed from four six-hour totals\n           E     = precipitation total from 1 report of 12-hour precipitation amount\n           F     = precipitation total from the summation of 2 reports of 12-hour totals\n           G     = precipitation from 1 report of 24-hour precipitation amount\n\t   H     = for TMAX/TMIN/TAVG represents highest or lowest hourly temperature (TMAX or TMIN) \n\t           or the average of hourly values (TAVG)\n                   for PRCP Station reported '0' as the amount for the day (eg, from hourly, 6-hourly \n                   reports, etc.) or the amount could not be calculated, but at least one occurrence \n                   of precipitation was noted in the present weather observations. This could indicate \n                   that a trace occurred (or more if the value is missing).\n           I     = Station did not report any precipitation data for the day and did not report any \n                   occurrences of precipitation in its present weather observations\n\t   K     = converted from knots \n\t   L     = temperature appears to be lagged with respect to reported\n\t           hour of observation \n           O     = converted from oktas \n\t   P     = identified as \"missing presumed zero\" in DSI 3200 and 3206\n           T     = trace of precipitation, snowfall, or snow depth\n\t   W     = converted from 16-point WBAN code (for wind direction)\n\nQFLAG1     is the quality flag for the first day of the month.  There are \n           fourteen possible values:\n\n           Blank = did not fail any quality assurance check\n           D     = failed duplicate check\n           G     = failed gap check\n           I     = failed internal consistency check\n           K     = failed streak/frequent-value check\n\t   L     = failed check on length of multiday period \n           M     = failed megaconsistency check\n           N     = failed naught check\n           O     = failed climatological outlier check\n           R     = failed lagged range check\n           S     = failed spatial consistency check\n           T     = failed temporal consistency check\n           W     = temperature too warm for snow\n           X     = failed bounds check\n\t   Z     = flagged as a result of an official Datzilla \n\t           investigation\n\nSFLAG1     is the source flag for the first day of the month.  There are \n           thirty possible values (including blank, upper and \n\t   lower case letters):\n\n           Blank = No source (i.e., data value missing)\n           0     = U.S. Cooperative Summary of the Day (NCDC DSI-3200)\n           1     = CF6 (form F6) daily climate summaries from the U.S.\n                   National Weather Service\n           2     = Synoptic Summary of the Day (SSOD) \"version 2\", the \n                   successor to GSOD (source 'S')\n           6     = CDMP Cooperative Summary of the Day (NCDC DSI-3206)\n           7     = U.S. Cooperative Summary of the Day -- Transmitted \n\t           via WxCoder3 (NCDC DSI-3207)\n           A     = U.S. Automated Surface Observing System (ASOS) \n                   real-time data (since January 1, 2006)\n\t   a     = Australian data from the Australian Bureau of Meteorology\n           B     = U.S. ASOS data for October 2000-December 2005 (NCDC \n                   DSI-3211)\n\t   b     = Belarus update\n\t   C     = Environment Canada\n\t   D     = Short time delay US National Weather Service CF6 daily \n\t           summaries provided by the High Plains Regional Climate\n\t\t   Center\n           d     = Short time delay US National Weather Service Daily\n                   Summary Message (DSMs) provided by the High Plains \n                   Regional Climate Center\n\t   E     = European Climate Assessment and Dataset (Klein Tank \n\t           et al., 2002)\t   \n           F     = U.S. Fort data \n           G     = Official Global Climate Observing System (GCOS) or \n                   other government-supplied data\n           H     = High Plains Regional Climate Center real-time data\n           I     = International collection (non U.S. data received through\n\t           personal contacts)\n           K     = U.S. Cooperative Summary of the Day data digitized from\n\t           paper observer forms (from 2011 to present)\n           M     = Monthly METAR Extract (additional ASOS data)\n\t   f     = Data provided courtesy of the Fiji Met Service\n           m     = Data from the Mexican National Water Commission (Comision\n\t           National del Agua -- CONAGUA)\n\t   N     = Community Collaborative Rain, Hail,and Snow (CoCoRaHS)\n\t   Q     = Data from several African countries that had been \n\t           \"quarantined\", that is, withheld from public release\n\t\t   until permission was granted from the respective \n\t           meteorological services\n           R     = NCEI Reference Network Database (Climate Reference Network\n\t           and Regional Climate Reference Network)\n\t   r     = All-Russian Research Institute of Hydrometeorological \n\t           Information-World Data Center\n           S     = Global Summary of the Day (NCDC DSI-9618)\n                   NOTE: \"S\" values are derived from hourly synoptic reports\n                   exchanged on the Global Telecommunications System (GTS).\n                   Daily values derived in this fashion may differ significantly\n                   from \"true\" daily data, particularly for precipitation\n                   (i.e., use with caution).\n\t   s     = China Meteorological Administration/National Meteorological Information Center/\n\t           Climatic Data Center (http://cdc.cma.gov.cn)\n           T     = SNOwpack TELemtry (SNOTEL) data obtained from the U.S. \n\t           Department of Agriculture's Natural Resources Conservation Service\n\t   U     = Remote Automatic Weather Station (RAWS) data obtained\n\t           from the Western Regional Climate Center\t   \n\t   u     = Ukraine update\t   \n\t   W     = WBAN/ASOS Summary of the Day from NCDC's Integrated \n\t           Surface Data (ISD).  \n           X     = U.S. First-Order Summary of the Day (NCDC DSI-3210)\n\t   Z     = Datzilla official additions or replacements \n\t   z     = Uzbekistan update\n\t   \n\t   When data are available for the same time from more than one source,\n\t   the highest priority source is chosen according to the following\n\t   priority order (from highest to lowest):\n\t   Z,R,W,D,d,1,0,6,C,X,K,7,F,B,M,f,m,r,E,z,u,b,s,a,G,Q,I,A,N,T,U,H,2,S\n\t   \n\t   \nVALUE2     is the value on the second day of the month\n\nMFLAG2     is the measurement flag for the second day of the month.\n\nQFLAG2     is the quality flag for the second day of the month.\n\nSFLAG2     is the source flag for the second day of the month.\n\n... and so on through the 31st day of the month.  Note: If the month has less \nthan 31 days, then the remaining variables are set to missing (e.g., for April, \nVALUE31 = -9999, MFLAG31 = blank, QFLAG31 = blank, SFLAG31 = blank).\n\n--------------------------------------------------------------------------------\n--------------------------------------------------------------------------------\n\nIV. FORMAT OF \"ghcnd-stations.txt\"\n\n------------------------------\nVariable   Columns   Type\n------------------------------\nID            1-11   Character\nLATITUDE     13-20   Real\nLONGITUDE    22-30   Real\nELEVATION    32-37   Real\nSTATE        39-40   Character\nNAME         42-71   Character\nGSN FLAG     73-75   Character\nHCN/CRN FLAG 77-79   Character\nWMO ID       81-85   Character\n------------------------------\n\nThese variables have the following definitions:\n\nID         is the station identification code.  Note that the first two\n           characters denote the FIPS  country code, the third character \n           is a network code that identifies the station numbering system \n           used, and the remaining eight characters contain the actual \n           station ID. \n\n           See \"ghcnd-countries.txt\" for a complete list of country codes.\n\t   See \"ghcnd-states.txt\" for a list of state/province/territory codes.\n\n           The network code  has the following five values:\n\n           0 = unspecified (station identified by up to eight \n\t       alphanumeric characters)\n\t   1 = Community Collaborative Rain, Hail,and Snow (CoCoRaHS)\n\t       based identification number.  To ensure consistency with\n\t       with GHCN Daily, all numbers in the original CoCoRaHS IDs\n\t       have been left-filled to make them all four digits long. \n\t       In addition, the characters \"-\" and \"_\" have been removed \n\t       to ensure that the IDs do not exceed 11 characters when \n\t       preceded by \"US1\". For example, the CoCoRaHS ID \n\t       \"AZ-MR-156\" becomes \"US1AZMR0156\" in GHCN-Daily\n           C = U.S. Cooperative Network identification number (last six \n               characters of the GHCN-Daily ID)\n\t   E = Identification number used in the ECA&D non-blended\n\t       dataset\n\t   M = World Meteorological Organization ID (last five\n\t       characters of the GHCN-Daily ID)\n\t   N = Identification number used in data supplied by a \n\t       National Meteorological or Hydrological Center\n           P = \"Pre-Coop\" (an internal identifier assigned by NCEI for station\n               records collected prior to the establishment of the U.S. Weather\n               Bureau and their management of the U.S. Cooperative (Coop) \n               Observer Program\n\t   R = U.S. Interagency Remote Automatic Weather Station (RAWS)\n\t       identifier\n\t   S = U.S. Natural Resources Conservation Service SNOwpack\n\t       TELemtry (SNOTEL) station identifier\n           W = WBAN identification number (last five characters of the \n               GHCN-Daily ID)\n\nLATITUDE   is latitude of the station (in decimal degrees).\n\nLONGITUDE  is the longitude of the station (in decimal degrees).\n\nELEVATION  is the elevation of the station (in meters, missing = -999.9).\n\n\nSTATE      is the U.S. postal code for the state (for U.S. stations only).\n\nNAME       is the name of the station.\n\nGSN FLAG   is a flag that indicates whether the station is part of the GCOS\n           Surface Network (GSN). The flag is assigned by cross-referencing \n           the number in the WMOID field with the official list of GSN \n           stations. There are two possible values:\n\n           Blank = non-GSN station or WMO Station number not available\n           GSN   = GSN station \n\nHCN/      is a flag that indicates whether the station is part of the U.S.\nCRN FLAG  Historical Climatology Network (HCN) or U.S. Climate Refererence\n          Network (CRN).  There are three possible values:\n\n           Blank = Not a member of the U.S. Historical Climatology \n\t           or U.S. Climate Reference Networks\n           HCN   = U.S. Historical Climatology Network station\n\t   CRN   = U.S. Climate Reference Network or U.S. Regional Climate \n\t           Network Station\n\nWMO ID     is the World Meteorological Organization (WMO) number for the\n           station.  If the station has no WMO number (or one has not yet \n\t   been matched to this station), then the field is blank.  \n\n--------------------------------------------------------------------------------\n--------------------------------------------------------------------------------\n\nV. FORMAT OF \"ghcnd-countries.txt\"\n\n------------------------------\nVariable   Columns   Type\n------------------------------\nCODE          1-2    Character\nNAME          4-64   Character\n------------------------------\n\nThese variables have the following definitions:\n\nCODE       is the FIPS country code of the country where the station is \n           located (from FIPS Publication 10-4 at \n           www.cia.gov/cia/publications/factbook/appendix/appendix-d.html).\n\nNAME       is the name of the country.\n\n--------------------------------------------------------------------------------\n--------------------------------------------------------------------------------\n\nVI. FORMAT OF \"ghcnd-states.txt\"\n\n------------------------------\nVariable   Columns   Type\n------------------------------\nCODE          1-2    Character\nNAME         4-50    Character\n------------------------------\n\nThese variables have the following definitions:\n\nCODE       is the POSTAL code of the U.S. state/territory or Canadian \n           province where the station is located \n\nNAME       is the name of the state, territory or province.\n\n--------------------------------------------------------------------------------\n--------------------------------------------------------------------------------\n\nVII. FORMAT OF \"ghcnd-inventory.txt\"\n\n------------------------------\nVariable   Columns   Type\n------------------------------\nID            1-11   Character\nLATITUDE     13-20   Real\nLONGITUDE    22-30   Real\nELEMENT      32-35   Character\nFIRSTYEAR    37-40   Integer\nLASTYEAR     42-45   Integer\n------------------------------\n\nThese variables have the following definitions:\n\nID         is the station identification code.  Please see \"ghcnd-stations.txt\"\n           for a complete list of stations and their metadata.\n\nLATITUDE   is the latitude of the station (in decimal degrees).\n\nLONGITUDE  is the longitude of the station (in decimal degrees).\n\nELEMENT    is the element type.  See section III for a definition of elements.\n\nFIRSTYEAR  is the first year of unflagged data for the given element.\n\nLASTYEAR   is the last year of unflagged data for the given element.\n\n--------------------------------------------------------------------------------\n--------------------------------------------------------------------------------\nVIII. FORMAT OF \"mingle-list.txt\"\n\n--------------------------------------------------------------------------------\nVariable                                  Column(s)   Type\n--------------------------------------------------------------------------------\nGHCN-Daily Identifier (ID)                      1-11       Character\nNo of sources assoc. with the station (N)       13-14      Integer\nSource Code of lowest ranking source            16         Character\nSource Idenfier of lowest ranking source        18-28      Character\nSource Code of next lowest ranking source       30         Character\nSource Identifier of next lowest ranking source 32-42\n.\n.\n.\nUp to Nth (highest ranking) source code and source identifier'\n[See section III for a definition of source codes]\n\nIX.  REFERENCES\n\nThe journal article describing GHCN-Daily is:\nMenne, M.J., I. Durre, R.S. Vose, B.E. Gleason, and T.G. Houston, 2012:  An overview \nof the Global Historical Climatology Network-Daily Database.  Journal of Atmospheric \nand Oceanic Technology, 29, 897-910, doi:10.1175/JTECH-D-11-00103.1.\n\nTo acknowledge the specific version of the dataset used, please cite:\nMenne, M.J., I. Durre, B. Korzeniewski, S. McNeal, K. Thomas, X. Yin, S. Anthony, R. Ray, \nR.S. Vose, B.E.Gleason, and T.G. Houston, 2012: Global Historical Climatology Network - \nDaily (GHCN-Daily), Version 3. [indicate subset used following decimal, \ne.g. Version 3.12]. \nNOAA National Climatic Data Center. http://doi.org/10.7289/V5D21VHZ [access date].\n\nKlein Tank, A.M.G. and Coauthors, 2002. Daily dataset of 20th-century surface\nair temperature and precipitation series for the European Climate Assessment.\nInt. J. of Climatol., 22, 1441-1453.\nData and metadata available at http://eca.knmi.nl\n\n\n\nFor additional information, please send an e-mail to ncdc.ghcnd@noaa.gov.\n",
+        "url": "https://noaa-ghcn-pds.s3.amazonaws.com/readme.txt"
+      },
+      "attestation": {
+        "dictionary_digest": "9e480ceccf1191bb4f3b2e2b6ec9112c4c9c3fe0e0781b08d4ce8c0874befc43",
+        "digest": "a44c3267a18e66205aa7c9eb1b7e6fef6b43643171d581359a922bff156f4643",
+        "plan_digest": "410e687c97d83a1edf522de8e3397c751f97c67dfcc72aa4fc774ca5af646d1f",
+        "profile": "ghcn-daily-scalar-v1",
+        "reason_provenance": "leader-authored explanation; semantic fields and citations validated",
+        "semantics": {
+          "aggregation": "DAILY_MAX",
+          "citations": [
+            {
+              "end_line": 152,
+              "quote": "           TMAX = Maximum temperature (tenths of degrees C)",
+              "start_line": 152
+            },
+            {
+              "end_line": 305,
+              "quote": "VALUE1     is the value on the first day of the month (missing = -9999).",
+              "start_line": 305
+            },
+            {
+              "end_line": 331,
+              "quote": "           T     = trace of precipitation, snowfall, or snow depth",
+              "start_line": 331
+            },
+            {
+              "end_line": 337,
+              "quote": "QFLAG1     is the quality flag for the first day of the month.  There are \n           fourteen possible values:\n\n           Blank = did not fail any quality assurance check",
+              "start_line": 334
+            }
+          ],
+          "missing_value": -9999,
+          "quality_policy": "NONBLANK_QFLAG_EXCLUDE",
+          "quantity": "TEMPERATURE",
+          "reason": "TMAX is defined as maximum temperature in tenths of degrees C. The dictionary establishes -9999 as missing for daily values, blank QFLAG as passing all checks, and MFLAG 'T' as trace for precipitation/snow elements.",
+          "source_unit": "DECI_CELSIUS",
+          "support": "SUPPORTED",
+          "trace_policy": "MFLAG_T_NONEXACT"
+        },
+        "source_sha256": "0e4e6f0e6947cf1add884c328a01760f31c56ef5fb86b85ed57dd5dc4c4aeaa6",
+        "status": "MISMATCH",
+        "target": {
+          "aggregation": "DAILY_MEAN",
+          "quantity": "TEMPERATURE",
+          "unit": "degC"
+        }
+      },
+      "receipt": null,
+      "normalizationError": "Read normalize_samples on 0x3BAfd91140bb7dF7e4ED2a98A2679Ed80A52e8c7 failed: Missing or invalid parameters.\nDouble check you have provided the correct parameters.\n\nDetails: execution failed\nVersion: viem@2.57.7",
+      "normalizationErrorNotice": "Generic read error is not rejection evidence; see the separately recorded expected-rollback write.",
+      "normalizationBlocked": true,
+      "negativeReceiptId": "negative-tmax-incorrect-mean-v1",
+      "negativeReceiptReadBack": null,
+      "negativeTransactionHash": "0x9b74b37f3135d61f883cb5914eb7f43dc8cd17a90bd6bfa004d4722d7f6c91af"
+    }
+  ],
+  "transactions": [
+    {
+      "label": "tmax-fahrenheit-v1-create",
+      "spec": {
+        "kind": "call",
+        "address": "0x3BAfd91140bb7dF7e4ED2a98A2679Ed80A52e8c7",
+        "actor": "0x9693a213f98b03E52Cc67645Fa2D9c457A9c6c44",
+        "method": "create_plan",
+        "args": [
+          "tmax-fahrenheit-v1",
+          "TMAX",
+          "TEMPERATURE",
+          "DAILY_MAX",
+          "degF",
+          "0e4e6f0e6947cf1add884c328a01760f31c56ef5fb86b85ed57dd5dc4c4aeaa6"
+        ],
+        "value": "0",
+        "leaderOnly": false
+      },
+      "intendedAt": "2026-10-17T22:34:52.342Z",
+      "status": "FINALIZED",
+      "execution": "SUCCESS",
+      "hash": "0x496f1012c0c237ecc1d581d413b90b67bf95a956e5b5d7a84dac94367ae0037b",
+      "submittedAt": "2026-10-17T22:34:54.436Z",
+      "executionResult": "SUCCESS",
+      "consensusResult": "MAJORITY_AGREE",
+      "leaderOnly": false,
+      "votes": {
+        "0x0B50B270Eba5D9B780272C4Cf4720260177e761D": "agree",
+        "0x40533175AfBbAee2c030F88259Afb5aEDbCF0E05": "agree",
+        "0xA712cB25a4002666FA9D09477251f238dD9e06b3": "agree",
+        "0xb0925568bFbCF00aADBcA053E6D0E1628ff3d530": "agree",
+        "0xf1C7551292319EE334e2D8A24eAC108Bd4C63b21": "agree"
+      },
+      "createdAt": "2026-10-17T22:34:53.788878+00:00",
+      "observedAt": "2026-10-17T22:51:21.718Z"
+    },
+    {
+      "label": "tmax-fahrenheit-v1-capture",
+      "spec": {
+        "kind": "call",
+        "address": "0x3BAfd91140bb7dF7e4ED2a98A2679Ed80A52e8c7",
+        "actor": "0x9693a213f98b03E52Cc67645Fa2D9c457A9c6c44",
+        "method": "capture_dictionary",
+        "args": [
+          "tmax-fahrenheit-v1"
+        ],
+        "value": "0",
+        "leaderOnly": false
+      },
+      "intendedAt": "2026-10-17T22:35:03.892Z",
+      "status": "FINALIZED",
+      "execution": "SUCCESS",
+      "hash": "0xdae8731e94d683ff7543f1908bf6ad082e45d7585601d25be0d89550c9864ec6",
+      "submittedAt": "2026-10-17T22:35:06.256Z",
+      "executionResult": "SUCCESS",
+      "consensusResult": "MAJORITY_AGREE",
+      "leaderOnly": false,
+      "votes": {
+        "0x1242E9f5bf9b253327f130E8802b7b2F438A21Ef": "agree",
+        "0x7bf4Ea55363bbe73A4dd5b3900bf03c978A63b6e": "agree",
+        "0x8a876C3F3a4783Bd123982bcBF3c672dc0239004": "idle",
+        "0x9244De5F20cB75A0c51d79A9A3208D00a99aFc10": "idle",
+        "0xb0925568bFbCF00aADBcA053E6D0E1628ff3d530": "agree"
+      },
+      "createdAt": "2026-10-17T22:35:05.458830+00:00",
+      "observedAt": "2026-10-17T22:51:24.012Z"
+    },
+    {
+      "label": "tmax-fahrenheit-v1-attest",
+      "spec": {
+        "kind": "call",
+        "address": "0x3BAfd91140bb7dF7e4ED2a98A2679Ed80A52e8c7",
+        "actor": "0x9693a213f98b03E52Cc67645Fa2D9c457A9c6c44",
+        "method": "attest",
+        "args": [
+          "tmax-fahrenheit-v1"
+        ],
+        "value": "0",
+        "leaderOnly": false
+      },
+      "intendedAt": "2026-10-17T22:35:20.464Z",
+      "status": "FINALIZED",
+      "execution": "SUCCESS",
+      "hash": "0xab267a2870d4041de63889304a3bdecd330f6c058318dfee688db1187ab65c66",
+      "submittedAt": "2026-10-17T22:35:22.428Z",
+      "executionResult": "SUCCESS",
+      "consensusResult": "MAJORITY_AGREE",
+      "leaderOnly": false,
+      "votes": {
+        "0x1242E9f5bf9b253327f130E8802b7b2F438A21Ef": "disagree",
+        "0x5Bbbd7cdD63c0ba7f088038Cb049bDDAbE4F6fd1": "agree",
+        "0x6a4179A851B3747A458baD2f089AB2EeFE0eBbAb": "agree",
+        "0x9244De5F20cB75A0c51d79A9A3208D00a99aFc10": "disagree",
+        "0xb0925568bFbCF00aADBcA053E6D0E1628ff3d530": "agree"
+      },
+      "createdAt": "2026-10-17T22:35:21.970526+00:00",
+      "observedAt": "2026-10-17T22:51:26.222Z"
+    },
+    {
+      "label": "tmax-fahrenheit-v1-record",
+      "spec": {
+        "kind": "call",
+        "address": "0x3BAfd91140bb7dF7e4ED2a98A2679Ed80A52e8c7",
+        "actor": "0x50c46dcb46B2A31D769b1200600A0E91BD60aAf8",
+        "method": "record_samples",
+        "args": [
+          "0x9693a213f98b03E52Cc67645Fa2D9c457A9c6c44",
+          "tmax-fahrenheit-v1",
+          "synthetic-temperature-v1",
+          "[{\"raw\":253,\"mflag\":\"\",\"qflag\":\"\",\"sflag\":\"S\"},{\"raw\":-52,\"mflag\":\"\",\"qflag\":\"\",\"sflag\":\"S\"},{\"raw\":0,\"mflag\":\"\",\"qflag\":\"\",\"sflag\":\"S\"},{\"raw\":-9999,\"mflag\":\"\",\"qflag\":\"\",\"sflag\":\"S\"},{\"raw\":253,\"mflag\":\"\",\"qflag\":\"X\",\"sflag\":\"S\"},{\"raw\":253,\"mflag\":\"?\",\"qflag\":\"\",\"sflag\":\"S\"},{\"raw\":253,\"mflag\":\"\",\"qflag\":\"\",\"sflag\":\"\"}]"
+        ],
+        "value": "0",
+        "leaderOnly": false
+      },
+      "intendedAt": "2026-10-17T22:39:56.545Z",
+      "status": "FINALIZED",
+      "execution": "SUCCESS",
+      "hash": "0xd64886f156ca6bd01f9d355237d7a073e4ce381ce2f50eb7c7a90923716715b1",
+      "submittedAt": "2026-10-17T22:39:58.537Z",
+      "executionResult": "SUCCESS",
+      "consensusResult": "MAJORITY_AGREE",
+      "leaderOnly": false,
+      "votes": {
+        "0x17ac0CaefB18205c737e64ee582c9245A28ca1f9": "agree",
+        "0x40533175AfBbAee2c030F88259Afb5aEDbCF0E05": "agree",
+        "0x892C437da9b9CA0b6017B6f046F58E3526B46ec6": "agree",
+        "0xe7eEe8a1c1690b0322d795B80A76ab2Cd1a0eAFd": "idle",
+        "0xf29b6947ed298d139FC2655DB15D868C9AbB3091": "idle"
+      },
+      "createdAt": "2026-10-17T22:39:58.047560+00:00",
+      "observedAt": "2026-10-17T22:51:28.368Z"
+    },
+    {
+      "label": "prcp-millimetres-v1-create",
+      "spec": {
+        "kind": "call",
+        "address": "0x3BAfd91140bb7dF7e4ED2a98A2679Ed80A52e8c7",
+        "actor": "0x9693a213f98b03E52Cc67645Fa2D9c457A9c6c44",
+        "method": "create_plan",
+        "args": [
+          "prcp-millimetres-v1",
+          "PRCP",
+          "PRECIPITATION",
+          "DAILY_TOTAL",
+          "mm",
+          "0e4e6f0e6947cf1add884c328a01760f31c56ef5fb86b85ed57dd5dc4c4aeaa6"
+        ],
+        "value": "0",
+        "leaderOnly": false
+      },
+      "intendedAt": "2026-10-17T22:40:09.410Z",
+      "status": "FINALIZED",
+      "execution": "SUCCESS",
+      "hash": "0x4553214fc0d1a9997b0c0f4c5c671ce16d8f1f74f6617bf9cc9ab95104ae0ecd",
+      "submittedAt": "2026-10-17T22:40:11.338Z",
+      "executionResult": "SUCCESS",
+      "consensusResult": "MAJORITY_AGREE",
+      "leaderOnly": false,
+      "votes": {
+        "0x1242E9f5bf9b253327f130E8802b7b2F438A21Ef": "agree",
+        "0x5Bbbd7cdD63c0ba7f088038Cb049bDDAbE4F6fd1": "agree",
+        "0x6a4179A851B3747A458baD2f089AB2EeFE0eBbAb": "idle",
+        "0x9244De5F20cB75A0c51d79A9A3208D00a99aFc10": "agree",
+        "0xf1C7551292319EE334e2D8A24eAC108Bd4C63b21": "agree"
+      },
+      "createdAt": "2026-10-17T22:40:10.903075+00:00",
+      "observedAt": "2026-10-17T22:51:30.534Z"
+    },
+    {
+      "label": "prcp-millimetres-v1-capture",
+      "spec": {
+        "kind": "call",
+        "address": "0x3BAfd91140bb7dF7e4ED2a98A2679Ed80A52e8c7",
+        "actor": "0x9693a213f98b03E52Cc67645Fa2D9c457A9c6c44",
+        "method": "capture_dictionary",
+        "args": [
+          "prcp-millimetres-v1"
+        ],
+        "value": "0",
+        "leaderOnly": false
+      },
+      "intendedAt": "2026-10-17T22:40:20.051Z",
+      "status": "FINALIZED",
+      "execution": "SUCCESS",
+      "hash": "0xaa731767d32959cd5be2f70d1f41288a205c340dd78e96f984fedb98d9776cec",
+      "submittedAt": "2026-10-17T22:40:21.796Z",
+      "executionResult": "SUCCESS",
+      "consensusResult": "MAJORITY_AGREE",
+      "leaderOnly": false,
+      "votes": {
+        "0x2FcBC452425f2F1e102c5c04b4331fcB46ee1c00": "agree",
+        "0x40533175AfBbAee2c030F88259Afb5aEDbCF0E05": "idle",
+        "0x7bf4Ea55363bbe73A4dd5b3900bf03c978A63b6e": "idle",
+        "0x8a876C3F3a4783Bd123982bcBF3c672dc0239004": "agree",
+        "0xad7d13f269CeAd4379E64a1A3a0803a827e70B43": "agree"
+      },
+      "createdAt": "2026-10-17T22:40:21.368088+00:00",
+      "observedAt": "2026-10-17T22:51:32.916Z"
+    },
+    {
+      "label": "prcp-millimetres-v1-attest",
+      "spec": {
+        "kind": "call",
+        "address": "0x3BAfd91140bb7dF7e4ED2a98A2679Ed80A52e8c7",
+        "actor": "0x9693a213f98b03E52Cc67645Fa2D9c457A9c6c44",
+        "method": "attest",
+        "args": [
+          "prcp-millimetres-v1"
+        ],
+        "value": "0",
+        "leaderOnly": false
+      },
+      "intendedAt": "2026-10-17T22:40:35.507Z",
+      "status": "FINALIZED",
+      "execution": "SUCCESS",
+      "hash": "0xbd7606a021cefdb554ff561d32be16589f95afea9a165739802612144be0ecf6",
+      "submittedAt": "2026-10-17T22:40:37.437Z",
+      "executionResult": "SUCCESS",
+      "consensusResult": "MAJORITY_AGREE",
+      "leaderOnly": false,
+      "votes": {
+        "0x2FcBC452425f2F1e102c5c04b4331fcB46ee1c00": "agree",
+        "0x8a876C3F3a4783Bd123982bcBF3c672dc0239004": "agree",
+        "0xb0925568bFbCF00aADBcA053E6D0E1628ff3d530": "disagree",
+        "0xe7eEe8a1c1690b0322d795B80A76ab2Cd1a0eAFd": "agree",
+        "0xf29b6947ed298d139FC2655DB15D868C9AbB3091": "idle"
+      },
+      "createdAt": "2026-10-17T22:40:36.861333+00:00",
+      "observedAt": "2026-10-17T22:51:34.964Z"
+    },
+    {
+      "label": "prcp-millimetres-v1-record",
+      "spec": {
+        "kind": "call",
+        "address": "0x3BAfd91140bb7dF7e4ED2a98A2679Ed80A52e8c7",
+        "actor": "0x50c46dcb46B2A31D769b1200600A0E91BD60aAf8",
+        "method": "record_samples",
+        "args": [
+          "0x9693a213f98b03E52Cc67645Fa2D9c457A9c6c44",
+          "prcp-millimetres-v1",
+          "synthetic-precipitation-v1",
+          "[{\"raw\":123,\"mflag\":\"\",\"qflag\":\"\",\"sflag\":\"S\"},{\"raw\":0,\"mflag\":\"\",\"qflag\":\"\",\"sflag\":\"S\"},{\"raw\":0,\"mflag\":\"T\",\"qflag\":\"\",\"sflag\":\"S\"},{\"raw\":-9999,\"mflag\":\"\",\"qflag\":\"\",\"sflag\":\"S\"},{\"raw\":123,\"mflag\":\"\",\"qflag\":\"X\",\"sflag\":\"S\"},{\"raw\":-1,\"mflag\":\"\",\"qflag\":\"\",\"sflag\":\"S\"},{\"raw\":123,\"mflag\":\"P\",\"qflag\":\"\",\"sflag\":\"S\"},{\"raw\":123,\"mflag\":\"\",\"qflag\":\"\",\"sflag\":\"?\"}]"
+        ],
+        "value": "0",
+        "leaderOnly": false
+      },
+      "intendedAt": "2026-10-17T22:41:26.089Z",
+      "status": "FINALIZED",
+      "execution": "SUCCESS",
+      "hash": "0xf75702832e4c09e411facb2fc020866729735f2adf5c31001538ee1cb367dca6",
+      "submittedAt": "2026-10-17T22:41:28.473Z",
+      "executionResult": "SUCCESS",
+      "consensusResult": "MAJORITY_AGREE",
+      "leaderOnly": false,
+      "votes": {
+        "0x0B50B270Eba5D9B780272C4Cf4720260177e761D": "agree",
+        "0x8a876C3F3a4783Bd123982bcBF3c672dc0239004": "agree",
+        "0xad7d13f269CeAd4379E64a1A3a0803a827e70B43": "agree",
+        "0xb0925568bFbCF00aADBcA053E6D0E1628ff3d530": "idle",
+        "0xf29b6947ed298d139FC2655DB15D868C9AbB3091": "idle"
+      },
+      "createdAt": "2026-10-17T22:41:27.808804+00:00",
+      "observedAt": "2026-10-17T22:51:37.334Z"
+    },
+    {
+      "label": "tmax-incorrect-mean-v1-create",
+      "spec": {
+        "kind": "call",
+        "address": "0x3BAfd91140bb7dF7e4ED2a98A2679Ed80A52e8c7",
+        "actor": "0x9693a213f98b03E52Cc67645Fa2D9c457A9c6c44",
+        "method": "create_plan",
+        "args": [
+          "tmax-incorrect-mean-v1",
+          "TMAX",
+          "TEMPERATURE",
+          "DAILY_MEAN",
+          "degC",
+          "0e4e6f0e6947cf1add884c328a01760f31c56ef5fb86b85ed57dd5dc4c4aeaa6"
+        ],
+        "value": "0",
+        "leaderOnly": false
+      },
+      "intendedAt": "2026-10-17T22:41:39.874Z",
+      "status": "FINALIZED",
+      "execution": "SUCCESS",
+      "hash": "0xcbc42ea2cc776677be2c10e92fd44db167d6b8cc229529cd5f6ff69d4fede7fd",
+      "submittedAt": "2026-10-17T22:41:41.889Z",
+      "executionResult": "SUCCESS",
+      "consensusResult": "MAJORITY_AGREE",
+      "leaderOnly": false,
+      "votes": {
+        "0x1dEcE6A694520b1d3a2e24b9f28500858C756BDb": "agree",
+        "0x2FcBC452425f2F1e102c5c04b4331fcB46ee1c00": "agree",
+        "0x892C437da9b9CA0b6017B6f046F58E3526B46ec6": "idle",
+        "0x9244De5F20cB75A0c51d79A9A3208D00a99aFc10": "agree",
+        "0xb0925568bFbCF00aADBcA053E6D0E1628ff3d530": "idle"
+      },
+      "createdAt": "2026-10-17T22:41:41.422042+00:00",
+      "observedAt": "2026-10-17T22:51:39.497Z"
+    },
+    {
+      "label": "tmax-incorrect-mean-v1-capture",
+      "spec": {
+        "kind": "call",
+        "address": "0x3BAfd91140bb7dF7e4ED2a98A2679Ed80A52e8c7",
+        "actor": "0x9693a213f98b03E52Cc67645Fa2D9c457A9c6c44",
+        "method": "capture_dictionary",
+        "args": [
+          "tmax-incorrect-mean-v1"
+        ],
+        "value": "0",
+        "leaderOnly": false
+      },
+      "intendedAt": "2026-10-17T22:41:52.122Z",
+      "status": "FINALIZED",
+      "execution": "SUCCESS",
+      "hash": "0xb521b98c92f22a11d7b07745dfa191aefa1148bf30cc3fb7bef1bbf8ffd2fad2",
+      "submittedAt": "2026-10-17T22:41:54.400Z",
+      "executionResult": "SUCCESS",
+      "consensusResult": "MAJORITY_AGREE",
+      "leaderOnly": false,
+      "votes": {
+        "0x0B50B270Eba5D9B780272C4Cf4720260177e761D": "idle",
+        "0x7bf4Ea55363bbe73A4dd5b3900bf03c978A63b6e": "agree",
+        "0x8a876C3F3a4783Bd123982bcBF3c672dc0239004": "idle",
+        "0x9244De5F20cB75A0c51d79A9A3208D00a99aFc10": "agree",
+        "0xa21bc502E3578E4b3039be8c59a257198f7c3f19": "agree"
+      },
+      "createdAt": "2026-10-17T22:41:53.803989+00:00",
+      "observedAt": "2026-10-17T22:51:41.793Z"
+    },
+    {
+      "label": "tmax-incorrect-mean-v1-attest",
+      "spec": {
+        "kind": "call",
+        "address": "0x3BAfd91140bb7dF7e4ED2a98A2679Ed80A52e8c7",
+        "actor": "0x9693a213f98b03E52Cc67645Fa2D9c457A9c6c44",
+        "method": "attest",
+        "args": [
+          "tmax-incorrect-mean-v1"
+        ],
+        "value": "0",
+        "leaderOnly": false
+      },
+      "intendedAt": "2026-10-17T22:42:08.321Z",
+      "status": "FINALIZED",
+      "execution": "SUCCESS",
+      "hash": "0x10be327de98d97618fb1c5c5b7c13a7fbdb27d0be207f95876df642500299420",
+      "submittedAt": "2026-10-17T22:42:10.473Z",
+      "executionResult": "SUCCESS",
+      "consensusResult": "MAJORITY_AGREE",
+      "leaderOnly": false,
+      "votes": {
+        "0x2FcBC452425f2F1e102c5c04b4331fcB46ee1c00": "agree",
+        "0x892C437da9b9CA0b6017B6f046F58E3526B46ec6": "idle",
+        "0xA712cB25a4002666FA9D09477251f238dD9e06b3": "idle",
+        "0xe7eEe8a1c1690b0322d795B80A76ab2Cd1a0eAFd": "agree",
+        "0xf1C7551292319EE334e2D8A24eAC108Bd4C63b21": "agree"
+      },
+      "createdAt": "2026-10-17T22:42:09.955258+00:00",
+      "observedAt": "2026-10-17T22:51:43.770Z"
+    }
+  ],
+  "negativeTransactions": [
+    {
+      "label": "tmax-incorrect-mean-v1-expected-rejection",
+      "spec": {
+        "kind": "call",
+        "address": "0x3BAfd91140bb7dF7e4ED2a98A2679Ed80A52e8c7",
+        "actor": "0x50c46dcb46B2A31D769b1200600A0E91BD60aAf8",
+        "method": "record_samples",
+        "args": [
+          "0x9693a213f98b03E52Cc67645Fa2D9c457A9c6c44",
+          "tmax-incorrect-mean-v1",
+          "negative-tmax-incorrect-mean-v1",
+          "[{\"raw\":253,\"mflag\":\"\",\"qflag\":\"\",\"sflag\":\"S\"}]"
+        ],
+        "value": "0",
+        "leaderOnly": false,
+        "expectedRollback": "Normalization requires an accepted semantic mapping"
+      },
+      "intendedAt": "2026-10-17T22:46:42.401Z",
+      "status": "FINALIZED",
+      "execution": "ERROR",
+      "hash": "0x9b74b37f3135d61f883cb5914eb7f43dc8cd17a90bd6bfa004d4722d7f6c91af",
+      "submittedAt": "2026-10-17T22:46:44.667Z",
+      "executionResult": "ERROR",
+      "consensusResult": "MAJORITY_AGREE",
+      "leaderOnly": false,
+      "votes": {
+        "0x5Bbbd7cdD63c0ba7f088038Cb049bDDAbE4F6fd1": "agree",
+        "0x9244De5F20cB75A0c51d79A9A3208D00a99aFc10": "idle",
+        "0xa21bc502E3578E4b3039be8c59a257198f7c3f19": "idle",
+        "0xad7d13f269CeAd4379E64a1A3a0803a827e70B43": "agree",
+        "0xe7eEe8a1c1690b0322d795B80A76ab2Cd1a0eAFd": "agree"
+      },
+      "createdAt": "2026-10-17T22:46:44.018818+00:00",
+      "observedAt": "2026-10-17T22:51:15.126Z",
+      "expectedFailure": true,
+      "expectedRollbackVerified": true,
+      "decodedRollback": "Normalization requires an accepted semantic mapping",
+      "leaderResultStatus": "rollback",
+      "outcome": "EXPECTED_REJECTION"
+    }
+  ]
+}

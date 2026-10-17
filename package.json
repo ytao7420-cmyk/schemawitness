@@ -1,0 +1,16 @@
+{
+  "name": "schemawitness-genlayer",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Evidence-bound NOAA GHCN Daily semantic mapping attestations with deterministic exact conversions on GenLayer.",
+  "engines": {"node": ">=22"},
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "plan": "node scripts/live-test.mjs --plan",
+    "live": "node scripts/live-test.mjs",
+    "verify": "node scripts/verify-evidence.mjs",
+    "source": "node scripts/capture-source.mjs"
+  },
+  "dependencies": {"genlayer-js": "1.1.8"}
+}
